@@ -24,7 +24,13 @@ router.post("/sign-up", async (req, res) => {
 
   // validation logic
 
-  const user = await User.create(req.body);
+  const user = await User.create({
+    email:req.body.email,
+    username:req.body.username,
+    password:hashedPassword,
+    phoneNumber:req.body.phoneNumber,
+    profilePhoto: req.body.profilePhoto
+  });
   res.redirect("/auth/sign-in");
 });
 
