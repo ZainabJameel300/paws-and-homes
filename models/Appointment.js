@@ -1,18 +1,16 @@
 const mongoose = require("mongoose");
 
 const appointmentSchema = new mongoose.Schema({
-  cat:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:'Cat'
-  },
   application:{
     type:mongoose.Schema.Types.ObjectId,
-    ref:'Application'
+    ref:'Application',
+    unique:true
   },
   message:{
     type:String,
     required:true,
-    maxLength:500,
+    maxlength:500,
+    trim:true
   },
   dateOfPickup:{
     type:Date,

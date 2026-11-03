@@ -4,8 +4,9 @@ const catSchema = new mongoose.Schema({
   name:{
     type:String,
     required:true,
-    maxLenght: 20,
-    minLenght:5
+    maxlenght:20,
+    minlenght:5,
+    trim:true
   },
   age:{
     type:Number,
@@ -15,6 +16,7 @@ const catSchema = new mongoose.Schema({
   breed:{
     type:String,
     required:true,
+    trim:true
   },
   gender:{
     type:String,
@@ -23,7 +25,8 @@ const catSchema = new mongoose.Schema({
   },
   description:{
     type:String,
-    required:true
+    required:true,
+    trim:true
   },
   image:{
     type:String,
@@ -55,7 +58,7 @@ const catSchema = new mongoose.Schema({
   status:{
     type:String,
     enum:['Available','Adopted'],
-    default:'Avaialbe'
+    default:'Available'
   },
   owner:{
     type:mongoose.Schema.Types.ObjectId,

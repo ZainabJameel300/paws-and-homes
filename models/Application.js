@@ -12,11 +12,13 @@ const applicationSchema = new mongoose.Schema({
   message:{
     type:String,
     required:true,
-    maxLength:500
+    maxlength:500,
+    trim:true
   },
   livingSituation:{
     type:String,
     required:true,
+    trim:true
   },
   experienceWithCats:{
     type:Boolean,
@@ -24,7 +26,7 @@ const applicationSchema = new mongoose.Schema({
   },
   status:{
     type:String,
-    enum:['Accepted','Rejected'],
+    enum:['Pending','Accepted','Rejected'],
     default: 'Pending'
   }
 
