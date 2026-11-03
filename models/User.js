@@ -1,6 +1,12 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
+  emial:{
+    type:String,
+    required: true,
+    unique: true,
+    trim: true
+  },
   username: {
     type: String,
     required: true,
@@ -11,6 +17,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  phoneNumber:{
+    type:Number,
+    required: true,
+    unique: true,
+    trim: true,
+    min:8,
+    max:8
+  },
+  profilePhoto:{
+    type:String,
+    default: ''
+  }
 }, {timestamps: true});
 
 const User = mongoose.model("User", userSchema);
