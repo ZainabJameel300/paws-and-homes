@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List a Cat</title>
+    <link rel="stylesheet" href="/css/sign-up.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <h1>List a Cat</h1>
+    <h3>Help a cat find a loving Home</h3>
+
+    <form action="/cat" method="post">
+        <label for="name">Name:</label>
+        <br>
+        <input name="name" id="name" type="text">
+        <br>
+        <br>
+        <label for="age">Age:</label>
+        <br>
+        <input name="age" id="age" type="number">
+        <br>
+        <br>
+        <label for="breed">Cat Breed:</label>
+        <br>
+        <select name="breed" id="breed">
+        <option value="british shorthair">british shorthair</option>
+        <option value="maine coon">maine coon</option>
+        <option value="ragdoll">ragdoll</option>
+        <option value="persian">persian</option>
+        <option value="siamese">siamese</option>
+        <option value="scottish fold">scottish fold</option>
+        <option value="other">other</option>
+       </select>
+       <br>
+       <br>
+        <label for="gender">Cat Gender:</label>
+        <br>
+        <select name="gender" id="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+       </select>
+       <br>
+       <br>
+       <label for="description">Description:</label>
+        <br>
+        <textarea id="description" name="description" rows="4" cols="50" placeholder="Describe Your cat here ...."></textarea>
+        <br>
+        <br>
+        <label for="image">Image: </label>
+        <br>
+        <input name="image" id="name" type="text">
+        <br>
+        <br>
+        <label>Is the cat Vaccinated?</label>
+        <br>
+        <input type="radio" id="vacc_yes" name="isVaccinated" value="true">
+        <label for="vacc_yes">Yes</label>
+        
+        <input type="radio" id="vacc_no" name="isVaccinated" value="false">
+        <label for="vacc_no">No</label>
+        <br>
+        <br>
+
+        <label>Is the cat Neutered?</label>
+        <br>
+        <input type="radio" id="neu_yes" name="isNeutered" value="true">
+        <label for="neu_yes">Yes</label>
+        
+        <input type="radio" id="neu_no" name="isNeutered" value="false">
+        <label for="neu_no">No</label>
+        <br>
+        <br>
+
+        
+        
+        <button>List a Cat for Adoption</button>
+    </form>
+    
+</body>
+</html>

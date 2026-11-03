@@ -21,7 +21,6 @@ const catSchema = new mongoose.Schema({
   gender:{
     type:String,
     required:true,
-    enum:['male','female']
   },
   description:{
     type:String,
@@ -43,15 +42,15 @@ const catSchema = new mongoose.Schema({
   location:{
     latitude:{
         type:Number,
-        required:true
+        // required:true
     },
     longitude:{
        type:Number,
-       required:true 
+      //  required:true 
     },
     adress:{
         type:String,
-        required:true
+        // required:true
     }
 
   },

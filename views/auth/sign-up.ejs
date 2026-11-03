@@ -1,48 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-  </head>
-  <body>
-    <%- include('../partials/navbar') %>
-    <h1>Create your Account</h1>
-    <h3>Join Our community and help more cats find their forever home</h3>
-    <form action="/auth/sign-up" method="post">
+    <link rel="stylesheet" href="/css/sign-up.css">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+</style>
+</head>
+<body>
 
-      <label for="email">Email:</label>
-      <br>
-      <input type="email" name="email" id="email" />
-       <br>
-       <br>
-      <label for="username">Username:</label>
-       <br>
-      <input type="text" name="username" id="username" />
-      <br>
-      <br>
-      <label for="password">Password:</label>
-      <br>
-      <input type="password" name="password" id="password" />
-       <br>
-       <br>
-      <label for="confirmPassword">Confirm Password:</label>
-      <br>
-      <input type="password" name="confirmPassword" id="confirmPassword" />
-       <br>
-       <br>
-      <label for="phoneNumber">Phone Number:</label>
-      <br>
-      <input type="text" name="phoneNumber" id="phoneNumber" />
-       <br>
-       <br>
-      <label for="profilePhoto">Profile Photo:</label>
-      <br>
-      <input type="text" name="profilePhoto" id="profilePhoto" />
-      <br>
-      <br>
-      <button type="submit">Sign up</button>
-      <p id="already-have-an-account">Already have an account? <a href="/auth/sign-in">Sign in</a></p>
-    </form>
-  </body>
+    <div class="sign-up-container">
+
+        <img id="logo" src="/assets/logo.png" alt="Paws & Homes Logo">
+
+        <h3>Create an Account to Join Our Community!</h3>
+
+        <div class="form-container">
+
+            <form action="/auth/sign-up" method="post">
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email">
+
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username">
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password">
+
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" name="confirmPassword" id="confirmPassword">
+
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" name="phoneNumber" id="phoneNumber">
+
+                <label for="profilePhoto">Profile Photo:</label>
+                <input type="text" name="profilePhoto" id="profilePhoto">
+
+                <button type="submit">Sign Up</button>
+
+            </form>
+
+            <p id="already-have-an-account">
+                Already have an account?
+                <a href="/auth/sign-in">Sign in</a>
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
 </html>
