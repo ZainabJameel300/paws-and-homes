@@ -64,7 +64,6 @@ const catSchema = new mongoose.Schema({
     ref: 'User'
   }
 
-
 }, {timestamps: true});
 
 const Cat = mongoose.model("Cat", catSchema);

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Detail Page</title>
+    <link rel="stylesheet" href="/css/cat-details.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <a href="/cat"><button id="go-back"> ← Go Back</button></a>
+         <div class="top-section">
+        <img id="cat-image" src="<%= cats.image%>" alt="<%= cats.name %>">
+             <div class="cat-details">
+            <h3 id="name"><%= cats.name%></h3>
+            <div class="cat-tags">
+                <p id="age"><%= cats.age%> years</p>
+                <p id="gender"><%= cats.gender%></p>
+                <p id="breed"><%= cats.breed%></p>
+            </div>
+            <div id="location"><p>📍 Manama</p></div>
+            <div class="cat-status">
+                <p class="isVaccinated"> 🏥 Vaccinated: <%= cats.isVaccinated ? 'Yes' : 'No' %></p>
+                <p class="isNeutered"> 💉 Neutered: <%= cats.isNeutered ? 'Yes' : 'No' %></p>
+            </div>
+            <hr>
+             <h3 id="about">About <%= cats.name%></h3>
+            <p id="descreption"><%= cats.description%></p>
+            </div>
+            </div>
+
+           
+            <% if(user?._id.toString() !== cats.owner?._id.toString()) { %>
+                <div id="button-id">
+            <button id="Adopt">Apply To Adopt</button>
+            </div>
+            <% } %>
+
+
+</body>
+</html>
