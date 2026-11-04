@@ -13,24 +13,28 @@ body {
     margin: 0 0 16px;
 }
 #go-back {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 10px;
+    margin: 0 0 20px;
     border-radius: 6px;
     border: none;
     height: 30px;
-    width: 100px;
+    width: 150px;
     background-color:#D5C4AE ;
     font-weight: 600;
+    font-size: 20px;
     color: #4A4A46;
+}
+
+.cat-content {
+    margin: 20px auto 0;
+    margin-top: 80px;
+    width: 966px;
 }
 
 .top-section {
     display: flex;
     gap: 16px;
-    margin-top: 15px;
-    padding: 0 23px;
-    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 50px;
 }
 
 #cat-image {

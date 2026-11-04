@@ -1,21 +1,29 @@
+<link rel="stylesheet" href="/css/nav-bar.css">
+
 <nav>
-    
-    <a href="/">Home</a>
-    <% if (user){ %>
-    <a href="/cat">Browse Cats</a>    
-    <a href="/cat/new">List a Cat</a>
-    <label for="profile">My Profile</label>
-    <select name="profile" id="profile">
-        <option value="My Listings">My Listings</option>
-        <option value="My Applications">My Applications</option>
-        <option value="My Appointments">My Appointments</option>
-       </select>
-       <a href="/auth/sign-out">Logout</a>
+    <img id="logo" src="/assets/logo-nav-bar.png" alt="Paws & Homes">
 
-    <% } else{ %>
-    <a href="/auth/sign-up">Sign up</a>
-    <a href="/auth/sign-in">Login</a>
+    <div class="nav-links">
+        <a href="/">Home</a>
 
-    <% } %>
-    
+        <% if (user){ %>
+            <a href="/cat">Browse Cats</a>
+            <a href="/cat/new">List a Cat</a>
+
+            <div class="profile">
+                <label for="profile">My Profile </label>
+                <select name="profile" id="profile">
+                    <option value="My Listings">My Listings</option>
+                    <option value="My Applications">My Applications</option>
+                    <option value="My Appointments">My Appointments</option>
+                </select>
+            </div>
+
+            <a class="logout" href="/auth/sign-out">Logout</a>
+
+        <% } else { %>
+            <a href="/auth/sign-up">Sign up</a>
+            <a href="/auth/sign-in">Login</a>
+        <% } %>
+    </div>
 </nav>
