@@ -1,9 +1,16 @@
 <nav>
     
-    <a href="/">Homepage</a>
+    <a href="/">Home</a>
     <% if (user){ %>
-    <a href="/auth/sign-out">Logout</a>
+    <a href="/cat">Browse Cats</a>    
     <a href="/cat/new">List a Cat</a>
+    <label for="profile">My Profile</label>
+    <select name="profile" id="profile">
+        <option value="My Listings">My Listings</option>
+        <option value="My Applications">My Applications</option>
+        <option value="My Appointments">My Appointments</option>
+       </select>
+       <a href="/auth/sign-out">Logout</a>
 
     <% } else{ %>
     <a href="/auth/sign-up">Sign up</a>

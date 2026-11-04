@@ -22,6 +22,11 @@ router.post('/', isSignedIn, async (req,res)=>{
     res.redirect('/')
 })
 
+router.get('/', async (req,res)=>{
+    const allCats = await Cat.find()
+    res.render('cats/browse-cats.ejs',{cats: allCats})
+})
+
 
 
 

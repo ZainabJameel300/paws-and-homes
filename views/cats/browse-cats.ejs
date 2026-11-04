@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Cats</title>
+    <link rel="stylesheet" href="/css/browse-cats.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <h1>Browse Cats</h1>
+    <h3>Find  your perfect furry friend</h3>
+
+    <div class="cat-cards-container">
+    <% for(let oneCat of cats){ %>
+        <div class="card">
+        <img class="img" src="<%= oneCat.image%>" alt="<%= oneCat.name %>">
+        <div class="cat-details">
+        <p class="cat-name"><%= oneCat.name%></p>
+        <p><%= oneCat.age%> years · <%=oneCat.gender%></p>
+        <button type="button">View Details&nbsp; →</button>
+        </div>
+         </div>
+     <% }%>
+       </div>
+    
+</body>
+</html>
