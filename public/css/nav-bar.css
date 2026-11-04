@@ -1,24 +1,25 @@
 nav {
     margin: 25px auto;
-    width: 80%;
+    width: fit-content;
+    max-width: 95%;
     background-color: #3A2418;
-    padding: 10px 30px;
+    padding: 10px 20px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     font-family: "Nunito Sans", sans-serif;
 }
 
-
 #logo {
     width: 180px;
+    flex-shrink: 0;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 55px;
-    margin-left: 150px;
+    gap: 25px;
+    margin-left: 120px;
 }
 
 
@@ -40,6 +41,12 @@ nav {
     gap: 5px;
     color: #DCCDB9;
 }
+#profile-photo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 
 .profile select {
     background-color: transparent;
@@ -49,7 +56,8 @@ nav {
     cursor: pointer;
 }
 
-.logout {
+.logout,
+.nav-links .button {
     background-color: #DCCDB9;
     color: #3A2418 !important;
     padding: 6px 30px;

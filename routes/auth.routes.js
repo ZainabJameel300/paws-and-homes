@@ -59,7 +59,8 @@ return res.send("Login failed. Please try again.");
 // If there is other data you want to save to req.session.user, do so here!
 req.session.user = {
 username: userInDatabase.username,
-_id: userInDatabase._id
+_id: userInDatabase._id,
+profilePhoto:userInDatabase.profilePhoto
 };
 
 res.redirect("/");
