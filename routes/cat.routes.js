@@ -24,7 +24,7 @@ router.post('/', isSignedIn, async (req,res)=>{
 })
 
 router.get('/', async (req,res)=>{
-    const allCats = await Cat.find()
+    const allCats = await Cat.find().populate('owner')
     res.render('cats/browse-cats.ejs',{cats: allCats})
 })
 

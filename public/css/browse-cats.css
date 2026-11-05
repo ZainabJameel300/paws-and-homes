@@ -41,7 +41,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 200px;
-    height: 300px;
+    height: 350px;
     overflow: hidden;
     padding: 8px;
 }
@@ -79,6 +79,42 @@ body {
     margin-top: 15px;
     padding: 9px 18px;
     font-weight: 600;
+}
+
+.cat-owner-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.owner-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.username-time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3px;
+}
+
+.username {
+    color: #38261D;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.time {
+    color: #806F62;
+    font-size: 13px;
+    margin: 0;
 }
 
 @media (max-width: 700px) {

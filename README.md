@@ -74,4 +74,14 @@
 
 
 
-## Credits
+## Credits and Refrences
+
+- [MDN Web Docs – JavaScript Date Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+- [MDN – Representing Dates & Times](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Representing_dates_times)
+- [MDN – Date.prototype.getTime()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime)
+- [MDN – Date.prototype.setDate()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setDate)
+- [MDN – Date.prototype.setHours()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setHours)
+- [MDN – Date.prototype.toLocaleDateString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString)
+- [MDN – Date.prototype.toLocaleTimeString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString)
+
+- [Learn JavaScript DATE Objects in 8 Minutes!](https://www.youtube.com/watch?v=LwYwz67l1lA)

@@ -22,6 +22,7 @@ body {
     font-weight: 600;
     font-size: 20px;
     color: #4A4A46;
+    cursor: pointer;
 }
 
 .cat-content {
@@ -34,7 +35,7 @@ body {
     display: flex;
     gap: 16px;
     margin-top: 0;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 #cat-image {
@@ -114,6 +115,5 @@ body {
     font-weight: 600;
     font-size: 20px;
     width: 500px;
-    margin-top: 20px;
     margin-bottom: 20px;
 }

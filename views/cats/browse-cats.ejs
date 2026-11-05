@@ -17,6 +17,55 @@
     <div class="cat-cards-container">
     <% for(let oneCat of cats){ %>
         <div class="card">
+         <div class="cat-owner-info">
+
+    <img class="owner-photo" src="<%= oneCat.owner.profilePhoto %>" alt="Cat owner profile photo">
+
+    <div class="username-time">
+
+        <p class="username"><%= oneCat.owner.username %></p>
+
+        <!-- This code is inspired by MDN Web Docs (Mozilla Developer Network) articles -->
+         <!-- and this youtube video https://www.youtube.com/watch?v=LwYwz67l1lA -->
+
+        <%
+            const createdAt = new Date(oneCat.createdAt); //saves the date of the post creation in createdAt using JS Date object
+
+            const today = new Date(); //this gets you the current date and time
+            today.setHours(0, 0, 0, 0); //this set the today const time to 0:0:0:0 (we want to compare the date only not the time)
+
+            const yesterday = new Date(today); //these 2 lines gets us yestrdays date
+            yesterday.setDate(yesterday.getDate() - 1);
+
+            const listingDate = new Date(createdAt); //these 2 lines gets the lisiting date and also set the time to 0
+            listingDate.setHours(0, 0, 0, 0);
+
+            let displayDate;
+
+            if (listingDate.getTime() === today.getTime()) {
+                displayDate = "Today";
+            } else if (listingDate.getTime() === yesterday.getTime()) {
+                displayDate = "Yesterday";
+            } else {
+                displayDate = createdAt.toLocaleDateString('en-GB');
+            }
+
+            const displayTime = createdAt.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: '2-digit'
+            });
+        %>
+
+        <p class="time">
+            <%= displayDate %>
+            <% if (displayDate === "Today" || displayDate === "Yesterday") { %>
+                · <%= displayTime %>
+            <% } %>
+        </p>
+
+    </div>
+
+</div> 
         <img class="img" src="<%= oneCat.image%>" alt="<%= oneCat.name %>">
         <div class="cat-details">
         <p class="cat-name"><%= oneCat.name%></p>
