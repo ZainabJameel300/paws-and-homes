@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Listings</title>
+    <link rel="stylesheet" href="/css/my-listing.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <div class="page-container">  
+    <div class="page-heading">
+        <h1>My Listings</h1>
+        <div class="h3-button">
+        <h3>Manage the cats you've listied for adoption.</h3>
+        <a href="/cat/new"><button id="list-cat-button"> + List a New Cat</button></a>
+        </div>
+        
+            <% for(let oneCat of cats) { %>
+
+    <div class="cat-card-container">
+
+        <img class="cat-img" src="<%= oneCat.image %>" alt="<%= oneCat.name %>">
+
+        <div class="cat-info">
+            <p class="cat-name"><%= oneCat.name %></p>
+            <p class="age-gender">
+                <%= oneCat.age %> Years · <%= oneCat.gender %>
+            </p>
+            <%
+            const createdAt = new Date(oneCat.createdAt); //saves the date of the post creation in createdAt using JS Date object
+
+            const today = new Date(); //this gets you the current date and time
+            today.setHours(0, 0, 0, 0); //this set the today const time to 0:0:0:0 (we want to compare the date only not the time)
+
+            const yesterday = new Date(today); //these 2 lines gets us yestrdays date
+            yesterday.setDate(yesterday.getDate() - 1);
+
+            const listingDate = new Date(createdAt); //these 2 lines gets the lisiting date and also set the time to 0
+            listingDate.setHours(0, 0, 0, 0);
+
+            let displayDate;
+
+            if (listingDate.getTime() === today.getTime()) {
+                displayDate = "Today";
+            } else if (listingDate.getTime() === yesterday.getTime()) {
+                displayDate = "Yesterday";
+            } else {
+                displayDate = createdAt.toLocaleDateString('en-GB');
+            }
+
+            const displayTime = createdAt.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: '2-digit'
+            });
+        %>
+
+        <p class="time">
+            <%= displayDate %>
+            <% if (displayDate === "Today" || displayDate === "Yesterday") { %>
+                · <%= displayTime %>
+            <% } %>
+        </p>
+            <a href="/cat/<%=oneCat._id%>"><button type="button">View Details&nbsp; →</button></a>
+        </div>
+
+        <div class="cat-actions">
+
+            <div class="status">
+                <%=oneCat.status%>
+            </div>
+
+            <div class="card-buttons">
+                <a href="">
+                    <button type="button">Edit</button>
+                </a>
+
+                <form class="delete-form" action="/cat/<%= oneCat._id%>/delete?_method=DELETE" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+<% } %>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    const deleteForms = document.querySelectorAll(".delete-form");
+
+    deleteForms.forEach(function(form) {
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault(); 
+
+            Swal.fire({
+                title: "Are you sure you want to delete this listing?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#6B4A2E",
+                cancelButtonColor: "#A99A8A",
+                confirmButtonText: "Yes",
+                cancelButtonText: "Cancel"
+            }).then(function(result) {
+
+                if (result.isConfirmed) {
+                    form.submit(); // Submit the form only if the user confirms
+                }
+
+            });
+
+        });
+
+    });
+</script>
+    
+</body>
+</html>

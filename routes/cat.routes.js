@@ -20,7 +20,7 @@ router.post('/', isSignedIn, async (req,res)=>{
         isNeutered:req.body.isNeutered,
         owner:req.session.user._id
     })
-    res.redirect('/')
+    res.redirect(`/cat/${req.session.user._id}/my-listings`)
 })
 
 router.get('/', async (req,res)=>{
@@ -31,6 +31,16 @@ router.get('/', async (req,res)=>{
 router.get('/:catId', async (req,res)=>{
     const foundCat = await Cat.findById(req.params.catId).populate('owner')
     res.render('cats/cat-details.ejs', {cats: foundCat})
+})
+
+router.get('/:userId/my-listings',async(req,res)=>{
+    const myListings = await Cat.find({owner:req.params.userId})
+    res.render('cats/my-listing.ejs',{cats:myListings})
+})
+
+router.delete('/:catId/delete', async(req,res)=>{
+   await Cat.findByIdAndDelete(req.params.catId)
+    res.redirect(`/cat/${req.session.user._id}/my-listings`)
 })
 
 

@@ -17,11 +17,13 @@
             <div class="profile">
                 <img id="profile-photo" src="<%=user.profilePhoto%>" alt="User profile photo">
                 <label for="profile">My Profile </label>
-                <select name="profile" id="profile">
-                    <option value="My Listings">My Listings</option>
-                    <option value="My Applications">My Applications</option>
-                    <option value="My Appointments">My Appointments</option>
-                </select>
+                <select name="profile" id="profile" onchange="window.location.href=this.value">
+                  <option value="" selected disabled>My Profile</option>
+                  <option value="/applications">Application Requests</option>
+                  <option value="/cat/<%= user._id %>/my-listings">My Listings</option>
+                  <option value="/applications">My Applications</option>
+                  <option value="/appointments">My Appointments</option>
+            </select>
             </div>
 
             <a class="button logout-button" href="/auth/sign-out">Logout</a>
