@@ -1,13 +1,13 @@
 nav {
     margin: 25px auto;
-    width: fit-content;
-    max-width: 95%;
-    min-width: 1200px;
+    width: 90%;
+    max-width: 1100px;
     background-color: #3A2418;
     padding: 10px 20px;
     border-radius: 10px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     font-family: "Nunito Sans", sans-serif;
 }
 
@@ -19,36 +19,53 @@ nav {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 25px;
-    margin-left: 120px;
 }
 
+/* When the user is logged in */
+.nav-links.logged-in {
+    flex: 1;
+    margin-left: 70px;
+    gap: 70px;
+}
+
+/* Push Logout to the far right */
+.nav-links.logged-in .logout-button {
+    margin-left: auto;
+}
+
+/* When the user is logged out */
+.nav-links.logged-out {
+    flex: 1;
+    justify-content: space-evenly;
+    margin-left: 100px;
+    gap: 40px;
+}
 
 .nav-links a {
     color: #DCCDB9;
     text-decoration: none;
     font-size: 16px;
+    white-space: nowrap;
 }
-
 
 .nav-links a:hover {
     color: white;
 }
-
 
 .profile {
     display: flex;
     align-items: center;
     gap: 5px;
     color: #DCCDB9;
+    white-space: nowrap;
 }
+
 #profile-photo {
     width: 35px;
     height: 35px;
     border-radius: 50%;
     object-fit: cover;
 }
-
 
 .profile select {
     background-color: #3A2418;
@@ -65,13 +82,12 @@ nav {
     padding: 10px;
 }
 
-
-
-.logout,
 .nav-links .button {
     background-color: #DCCDB9;
     color: #3A2418 !important;
     padding: 6px 30px;
     border-radius: 8px;
     font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
 }

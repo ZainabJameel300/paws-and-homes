@@ -28,7 +28,7 @@ router.get('/', async (req,res)=>{
     res.render('cats/browse-cats.ejs',{cats: allCats})
 })
 
-router.get('/:catId', isSignedIn, async (req,res)=>{
+router.get('/:catId', async (req,res)=>{
     const foundCat = await Cat.findById(req.params.catId).populate('owner')
     res.render('cats/cat-details.ejs', {cats: foundCat})
 })

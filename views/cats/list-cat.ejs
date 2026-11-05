@@ -5,93 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List a Cat</title>
     <link rel="stylesheet" href="/css/list-cat.css">
-    <style>
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
-</style>
 </head>
 <body>
     <%- include('../partials/navbar') %>
-    <div class="list-cat-container">
-    <h1>List a Cat</h1>
-    <h3>Help a cat find a loving Home</h3>
+   <div class="page-container">
+
+    <div class="page-heading">
+        <h1>List a Cat</h1>
+        <h3>Help a cat find a loving home</h3>
+    </div>
+
+    <div class="form-container">
+        <form action="/cat" method="post">
+
+            <div class="form-group">
+                <label for="name">Cat's Name:</label>
+                <input name="name" id="name" type="text" placeholder="e.g. Luna">
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input name="age" id="age" type="number" placeholder="e.g. 2">
+            </div>
+
+            <div class="form-group">
+                <label for="breed">Cat Breed:</label>
+                <select name="breed" id="breed">
+                    <option value="" disabled selected>Select Breed</option>
+                    <option value="domestic-shorthair">Domestic Shorthair</option>
+                    <option value="domestic-mediumhair">Domestic Mediumhair</option>
+                    <option value="domestic-longhair">Domestic Longhair</option>
+                    <option value="mixed-breed">Mixed Breed / Unknown</option>
+                    <option value="bengal">Bengal</option>
+                    <option value="british-shorthair">British Shorthair</option>
+                    <option value="maine-coon">Maine Coon</option>
+                    <option value="persian">Persian</option>
+                    <option value="ragdoll">Ragdoll</option>
+                    <option value="russian-blue">Russian Blue</option>
+                    <option value="siamese">Siamese</option>
+                    <option value="sphynx">Sphynx</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Cat Gender:</label>
+                <select name="gender" id="gender">
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4"
+                    placeholder="Tell us a little about your cat..."></textarea>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="image">Cat Photo:</label>
+                <input name="image" id="image" type="text" placeholder="Paste an image URL for now">
+            </div>
+
+            <!-- Future location picker can go here -->
+
+            <div class="form-group">
+                <label>Is the cat vaccinated?</label>
+                <div class="radio-options">
+                    <label><input type="radio" name="isVaccinated" value="true"> Yes</label>
+                    <label><input type="radio" name="isVaccinated" value="false"> No</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Is the cat neutered?</label>
+                <div class="radio-options">
+                    <label><input type="radio" name="isNeutered" value="true"> Yes</label>
+                    <label><input type="radio" name="isNeutered" value="false"> No</label>
+                </div>
+            </div>
+
+            <button type="submit">List a Cat for Adoption</button>
+
+        </form>
+    </div>
+
     
-     <div class="form-container">
-    <form action="/cat" method="post">
-        <label for="name">Name:</label>
-        <br>
-        <input name="name" id="name" type="text" placeholder="e.g. Luna">
-        <br>
-        <br>
-        <label for="age">Age:</label>
-        <br>
-        <input name="age" id="age" type="number" placeholder="e.g. 2">
-        <br>
-        <br>
-        <label for="breed">Cat Breed:</label>
-        <br>
-        <select name="breed" id="breed">
-        <option value="" disabled selected>Select Breed</option>   
-        <option value="domestic-shorthair">Domestic Shorthair</option>
-        <option value="domestic-mediumhair">Domestic Mediumhair</option>
-        <option value="domestic-longhair">Domestic Longhair</option>
-        <option value="mixed-breed">Mixed Breed / Unknown</option>
-        <option value="bengal">Bengal</option>
-        <option value="british-shorthair">British Shorthair</option>
-        <option value="maine-coon">Maine Coon</option>
-        <option value="persian">Persian</option>
-        <option value="ragdoll">Ragdoll</option>
-        <option value="russian-blue">Russian Blue</option>
-        <option value="siamese">Siamese</option>
-        <option value="sphynx">Sphynx</option>
-        <option value="other">other</option>
-       </select>
-       <br>
-       <br>
-        <label for="gender">Cat Gender:</label>
-        <br>
-        <select name="gender" id="gender">
-        <option value="" disabled selected>Select Gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-       </select>
-       <br>
-       <br>
-       <label for="description">Description:</label>
-        <br>
-        <textarea id="description" name="description" rows="4" cols="50" placeholder="Describe Your cat here ...."></textarea>
-        <br>
-        <br>
-        <label for="image">Image: </label>
-        <br>
-        <input name="image" id="name" type="text">
-        <br>
-        <br>
-        <label>Is the cat Vaccinated?</label>
-        <br>
-        <input type="radio" id="vacc_yes" name="isVaccinated" value="true">
-        <label for="vacc_yes">Yes</label>
-        
-        <input type="radio" id="vacc_no" name="isVaccinated" value="false">
-        <label for="vacc_no">No</label>
-        <br>
-        <br>
 
-        <label>Is the cat Neutered?</label>
-        <br>
-        <input type="radio" id="neu_yes" name="isNeutered" value="true">
-        <label for="neu_yes">Yes</label>
-        
-        <input type="radio" id="neu_no" name="isNeutered" value="false">
-        <label for="neu_no">No</label>
-        <br>
-        <br>
-
-        
-        
-        <button>List a Cat for Adoption</button>
-    </form>
-    </div>
-    </div>
+</div>
     
 </body>
 </html>

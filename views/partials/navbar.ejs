@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/css/nav-bar.css">
+<link rel="stylesheet" href="/css/font.css">
 
 <nav>
     <a href="/">
@@ -6,7 +7,7 @@
     </a>
     
 
-    <div class="nav-links">
+    <div class="nav-links <%= user ? 'logged-in' : 'logged-out' %>">
         <a href="/">Home</a>
         <a href="/cat">Browse Cats</a>
         <% if (user){ %>
@@ -23,7 +24,7 @@
                 </select>
             </div>
 
-            <a class="button" href="/auth/sign-out">Logout</a>
+            <a class="button logout-button" href="/auth/sign-out">Logout</a>
 
         <% } else { %>
             <a class="button" href="/auth/sign-up">Sign up</a>

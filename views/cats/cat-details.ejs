@@ -32,7 +32,7 @@
     </div>
 
            
-            <% if(user?._id.toString() !== cats.owner?._id.toString()) { %>
+            <% if(!user||user?._id.toString() !== cats.owner?._id.toString()) { %>
                 <div id="button-id">
             <button id="Adopt">Apply To Adopt</button>
             </div>

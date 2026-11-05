@@ -12,7 +12,7 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     position: relative;
-    left: 5px;
+    left: 20px;
 }
 
 .page-heading {
@@ -23,6 +23,7 @@ body {
 
 .page-heading h1 {
     margin: 0 0 5px;
+    padding-bottom: 15px;
 }
 
 .page-heading h3 {
@@ -32,7 +33,7 @@ body {
 .cat-cards-container {
     display: grid;
     grid-template-columns: repeat(5, 200px);
-    gap: 35px;
+    gap: 25px;
     padding: 10px 0;
 }
 .card {
