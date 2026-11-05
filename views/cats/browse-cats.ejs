@@ -8,8 +8,11 @@
 </head>
 <body>
     <%- include('../partials/navbar') %>
-    <h1>Browse Cats</h1>
-    <h3>Find  your perfect furry friend</h3>
+    <div class="page-container">
+    <div class="page-heading">
+        <h1>Browse Cats</h1>
+        <h3>Find your perfect furry friend</h3>
+    </div>
 
     <div class="cat-cards-container">
     <% for(let oneCat of cats){ %>
@@ -23,6 +26,6 @@
          </div>
      <% }%>
        </div>
-    
+    </div>
 </body>
 </html>

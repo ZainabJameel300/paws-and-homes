@@ -2,6 +2,7 @@ nav {
     margin: 25px auto;
     width: fit-content;
     max-width: 95%;
+    min-width: 1200px;
     background-color: #3A2418;
     padding: 10px 20px;
     border-radius: 10px;
@@ -48,13 +49,23 @@ nav {
     object-fit: cover;
 }
 
+
 .profile select {
-    background-color: transparent;
+    background-color: #3A2418;
     border: none;
     color: #DCCDB9;
-    width: 15px;
+    width: 18px;
     cursor: pointer;
+    outline: none;
 }
+
+.profile select option {
+    background-color: #3A2418;
+    color: #DCCDB9;
+    padding: 10px;
+}
+
+
 
 .logout,
 .nav-links .button {
