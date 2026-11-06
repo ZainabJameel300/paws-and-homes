@@ -43,6 +43,18 @@ router.delete('/:catId/delete', async(req,res)=>{
     res.redirect(`/cat/${req.session.user._id}/my-listings`)
 })
 
+router.get('/:catId/edit', async (req,res)=>{
+    const foundCat = await Cat.findById(req.params.catId)
+    res.render('cats/edit-cat.ejs',{cat: foundCat})
+})
+
+router.put('/:catId', async (req,res)=>{
+
+    const updatedCat = await Cat.findByIdAndUpdate(req.params.catId, req.body)
+    
+    res.redirect(`/cat/${req.params.catId}`)
+})
+
 
 
 

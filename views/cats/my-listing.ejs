@@ -71,7 +71,7 @@
             </div>
 
             <div class="card-buttons">
-                <a href="">
+                <a href="/cat/<%= oneCat._id %>/edit">
                     <button type="button">Edit</button>
                 </a>
 
@@ -87,7 +87,6 @@
 <% } %>
     </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
@@ -110,7 +109,7 @@
             }).then(function(result) {
 
                 if (result.isConfirmed) {
-                    form.submit(); // Submit the form only if the user confirms
+                    form.submit(); 
                 }
 
             });

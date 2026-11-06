@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List a Cat</title>
+    <link rel="stylesheet" href="/css/edit-cat.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+   <div class="page-container">
+
+    <div class="page-heading">
+        <h1>Update Cat Information</h1>
+        <h3>Make Sure Everything is lining up!</h3>
+    </div>
+
+    <div class="form-container">
+        <form class="update-form" action="/cat/<%= cat._id%>?_method=PUT" method="post">
+
+            <div class="form-group">
+                <label for="name">Cat's Name:</label>
+                <input value="<%=cat.name%>" name="name" id="name" type="text" placeholder="e.g. Luna">
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input value="<%=cat.age%>" name="age" id="age" type="number" placeholder="e.g. 2">
+            </div>
+
+            <div class="form-group">
+                <label for="breed">Cat Breed:</label>
+                <select name="breed" id="breed">
+
+    <option value="" disabled>Select Breed</option>
+
+    <option value="domestic-shorthair"
+        <% if (cat.breed.trim() === 'domestic-shorthair') { %> selected <% } %>>
+        Domestic Shorthair
+    </option>
+
+    <option value="domestic-mediumhair"
+        <% if (cat.breed.trim() === 'domestic-mediumhair') { %> selected <% } %>>
+        Domestic Mediumhair
+    </option>
+
+    <option value="domestic-longhair"
+        <% if (cat.breed.trim() === 'domestic-longhair') { %> selected <% } %>>
+        Domestic Longhair
+    </option>
+
+    <option value="mixed-breed"
+        <% if (cat.breed.trim() === 'mixed-breed') { %> selected <% } %>>
+        Mixed Breed / Unknown
+    </option>
+
+    <option value="bengal"
+        <% if (cat.breed.trim() === 'bengal') { %> selected <% } %>>
+        Bengal
+    </option>
+
+    <option value="british-shorthair"
+        <% if (cat.breed.trim() === 'british-shorthair') { %> selected <% } %>>
+        British Shorthair
+    </option>
+
+    <option value="maine-coon"
+        <% if (cat.breed.trim() === 'maine-coon') { %> selected <% } %>>
+        Maine Coon
+    </option>
+
+    <option value="persian"
+        <% if (cat.breed.trim() === 'persian') { %> selected <% } %>>
+        Persian
+    </option>
+
+    <option value="ragdoll"
+        <% if (cat.breed.trim() === 'ragdoll') { %> selected <% } %>>
+        Ragdoll
+    </option>
+
+    <option value="russian-blue"
+        <% if (cat.breed.trim() === 'russian-blue') { %> selected <% } %>>
+        Russian Blue
+    </option>
+
+    <option value="siamese"
+        <% if (cat.breed.trim() === 'siamese') { %> selected <% } %>>
+        Siamese
+    </option>
+
+    <option value="sphynx"
+        <% if (cat.breed.trim() === 'sphynx') { %> selected <% } %>>
+        Sphynx
+    </option>
+
+    <option value="other"
+        <% if (cat.breed.trim() === 'other') { %> selected <% } %>>
+        Other
+    </option>
+
+</select>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Cat Gender:</label>
+                <select name="gender" id="gender">
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male" <% if(cat.gender.trim()=== 'Male') { %> selected <% }  %> >Male</option>
+                    <option value="Female" <% if(cat.gender.trim()=== 'Female') { %> selected <% }  %> >Female</option>
+                </select>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="description">Description:</label>
+                <textarea  id="description" name="description" rows="4"
+                    placeholder="Tell us a little about your cat..."><%=cat.description%></textarea>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="image">Cat Photo:</label>
+                <input value="<%=cat.image%>" name="image" id="image" type="text" placeholder="Paste an image URL for now">
+            </div>
+
+            <!-- Future location picker can go here -->
+
+            <div class="form-group">
+                <label>Is the cat vaccinated?</label>
+                <div class="radio-options">
+                    <label><input type="radio" name="isVaccinated" value="true"
+                        <% if(cat.isVaccinated===true) { %> checked <% }%>
+                        > Yes</label>
+                    <label><input type="radio" name="isVaccinated" value="false"
+                        <% if(cat.isVaccinated===false) { %> checked <% }%>
+                        > No</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Is the cat neutered?</label>
+                <div class="radio-options">
+                    <label><input type="radio" name="isNeutered" value="true"
+                        <% if(cat.isNeutered===true) { %> checked <% }%>
+                        > Yes</label>
+                    <label><input type="radio" name="isNeutered" value="false"
+                        <% if(cat.isNeutered===false) { %> checked <% }%>
+                        > No</label>
+                </div>
+            </div>
+
+            <button  type="submit">Update Information</button>
+
+        </form>
+    </div>
+
+    
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <!-- Some of this code is inspired by https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault to understand how to prevent the form from submiting immediately -->
+<script>
+    const updateForms = document.querySelectorAll(".update-form"); //first we cache the update form element 
+
+    updateForms.forEach(function(form) { //then we create a functin that for each click add an event listner
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault(); 
+
+            Swal.fire({
+                title: "Are you sure you want to Update this listing?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#6B4A2E",
+                cancelButtonColor: "#A99A8A",
+                confirmButtonText: "Yes",
+                cancelButtonText: "Cancel"
+            }).then(function(result) {
+
+                if (result.isConfirmed) {
+                    form.submit(); 
+                }
+
+            });
+
+        });
+
+    });
+</script>
+    
+</body>
+</html>

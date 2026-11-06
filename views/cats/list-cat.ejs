@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-container">
-        <form action="/cat" method="post">
+        <form class="list-form" action="/cat" method="post">
 
             <div class="form-group">
                 <label for="name">Cat's Name:</label>
@@ -94,6 +94,37 @@
     
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <!-- Some of this code is inspired by https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault to understand how to prevent the form from submiting immediately -->
+<script>
+    const createForms = document.querySelectorAll(".list-form"); //first we cache the update form element 
+
+    createForms.forEach(function(form) { //then we create a functin that for each click add an event listner
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault(); 
+
+            Swal.fire({
+                title: "Ready to List your cat?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#6B4A2E",
+                cancelButtonColor: "#A99A8A",
+                confirmButtonText: "Yes, Continue",
+                cancelButtonText: "Cancel"
+            }).then(function(result) {
+
+                if (result.isConfirmed) {
+                    form.submit(); 
+                }
+
+            });
+
+        });
+
+    });
+</script>
     
 </body>
 </html>
