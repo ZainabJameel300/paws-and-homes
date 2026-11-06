@@ -60,12 +60,17 @@ body {
     flex-direction: column;
     align-self: flex-start;
     padding-top: 25px;
+    gap: 10px;
+}
+
+.cat-info p {
+    margin: 0;
+    line-height: 1.3;
 }
 
 .cat-name {
     font-size: 22px;
     font-weight: bold;
-    margin: 0 0 10px;
     color: #3A2418;
 }
 
@@ -124,7 +129,7 @@ body {
     border-radius: 6px;
     color: #D5C4AE;
     cursor: pointer;
-    margin-top: 5px;
+    margin-top: 0;
     padding: 9px 18px;
     font-weight: 600;
 }
@@ -145,6 +150,6 @@ body {
     background-color: #563A25;
 }
 .time{
-  color: #806B5B;
-  font-size: 15px;  
+    color: #806B5B;
+    font-size: 15px;
 }

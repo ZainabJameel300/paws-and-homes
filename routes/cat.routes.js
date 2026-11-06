@@ -18,6 +18,11 @@ router.post('/', isSignedIn, async (req,res)=>{
         image:req.body.image,
         isVaccinated:req.body.isVaccinated,
         isNeutered:req.body.isNeutered,
+        location:{
+          latitude:req.body.latitude,
+          longitude:req.body.longitude,
+          address:req.body.address
+        },
         owner:req.session.user._id
     })
     res.redirect(`/cat/${req.session.user._id}/my-listings`)

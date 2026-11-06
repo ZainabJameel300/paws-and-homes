@@ -85,3 +85,5 @@
 - [MDN – Date.prototype.toLocaleTimeString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString)
 - [Learn JavaScript DATE Objects in 8 Minutes!](https://www.youtube.com/watch?v=LwYwz67l1lA)
 - [Event: preventDefault() method](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
+- [Sweet Alert Library](https://sweetalert2.github.io/)
+-[location-picker](https://github.com/cyphercodes/location-picker)

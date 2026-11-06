@@ -13,7 +13,7 @@
         <h1>My Listings</h1>
         <div class="h3-button">
         <h3>Manage the cats you've listied for adoption.</h3>
-        <a href="/cat/new"><button id="list-cat-button"> + List a New Cat</button></a>
+        <a href="/cat/new"><button id="list-cat-button"> <i class="fa fa-plus" aria-hidden="true"></i> List a New Cat</button></a>
         </div>
         
             <% for(let oneCat of cats) { %>
@@ -54,6 +54,9 @@
                 minute: '2-digit'
             });
         %>
+        <p class="time">
+            <i class="fa-solid fa-location-dot"></i> <%= oneCat.location.address%>
+        </p>
 
         <p class="time">
             <%= displayDate %>
@@ -61,7 +64,9 @@
                 · <%= displayTime %>
             <% } %>
         </p>
-            <a href="/cat/<%=oneCat._id%>"><button type="button">View Details&nbsp; →</button></a>
+
+
+            <a href="/cat/<%=oneCat._id%>"><button type="button">View Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button></a>
         </div>
 
         <div class="cat-actions">
@@ -72,11 +77,11 @@
 
             <div class="card-buttons">
                 <a href="/cat/<%= oneCat._id %>/edit">
-                    <button type="button">Edit</button>
+                    <button type="button"><i class="fa fa-pencil" aria-hidden="true"> </i> <span>  </span>  Edit</button>
                 </a>
 
                 <form class="delete-form" action="/cat/<%= oneCat._id%>/delete?_method=DELETE" method="post">
-                    <button type="submit">Delete</button>
+                    <button type="submit"><i class="fa fa-trash" aria-hidden="true"></i><span>  </span>Delete</button>
                 </form>
             </div>
 

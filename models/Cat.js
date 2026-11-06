@@ -4,8 +4,8 @@ const catSchema = new mongoose.Schema({
   name:{
     type:String,
     required:true,
-    maxlenght:20,
-    minlenght:5,
+    maxlength:20,
+    minlength:5,
     trim:true
   },
   age:{
@@ -42,15 +42,15 @@ const catSchema = new mongoose.Schema({
   location:{
     latitude:{
         type:Number,
-        // required:true
+        required:true
     },
     longitude:{
        type:Number,
-      //  required:true 
+       required:true 
     },
-    adress:{
+    address:{
         type:String,
-        // required:true
+        required:true
     }
 
   },

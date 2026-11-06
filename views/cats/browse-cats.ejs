@@ -70,7 +70,11 @@
         <div class="cat-details">
         <p class="cat-name"><%= oneCat.name%></p>
         <p><%= oneCat.age%> years · <%=oneCat.gender%></p>
-        <a href="/cat/<%=oneCat._id%>"><button type="button">View Details&nbsp; →</button></a>
+        <p>
+            <i class="fa-solid fa-location-dot"></i>
+            <%=oneCat.location.address%>
+        </p>
+        <a href="/cat/<%=oneCat._id%>"><button type="button">View Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button></a>
         </div>
          </div>
      <% }%>
