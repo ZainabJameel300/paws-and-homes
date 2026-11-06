@@ -122,7 +122,31 @@
                 <input value="<%=cat.image%>" name="image" id="image" type="text" placeholder="Paste an image URL for now">
             </div>
 
-            <!-- Future location picker can go here -->
+            <div class="form-group full-width">
+    <label>Cat's Location:</label>
+
+   <!-- provider="leaflet" this is the map provider (it baiscally uses leaflet to display the map but OpenStreetMap is the one providing the actual geographic map data ) --> 
+    <!-- center , this baiscally controls where the map is pinned when it's initially opens -->
+     <!-- lat-name="latitude"
+        lng-name="longitude" when the form is submitted save the lat and the long under these names in the request body -->
+        <!-- address-name="address" this saves the readable adress as adress in the request body -->
+         <!-- search : this enables the search box in the location picker (this is a boolean attribute so it does not need to be declared)-->
+          <!-- reverse-geocode , when this is enabled it enable us to convert a location cordinate into a readable address -->
+           <!-- locate="button" , this adds the locate me button -->
+    <location-picker
+        id="cat-location"
+        provider="leaflet"   
+        center="<%=cat.location.latitude%>,<%=cat.location.longitude%>"
+        lat-name="latitude"
+        lng-name="longitude"
+        address-name="address"
+        search
+        reverse-geocode
+        locate="button"
+        required
+        style="height: 350px">
+    </location-picker>
+</div>
 
             <div class="form-group">
                 <label>Is the cat vaccinated?</label>
@@ -187,6 +211,6 @@
 
     });
 </script>
-    
+     <script src="https://cdn.jsdelivr.net/npm/location-picker@3"></script>
 </body>
 </html>

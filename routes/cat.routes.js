@@ -38,24 +38,38 @@ router.get('/:catId', async (req,res)=>{
     res.render('cats/cat-details.ejs', {cats: foundCat})
 })
 
-router.get('/:userId/my-listings',async(req,res)=>{
+router.get('/:userId/my-listings',isSignedIn,async(req,res)=>{
     const myListings = await Cat.find({owner:req.params.userId})
     res.render('cats/my-listing.ejs',{cats:myListings})
 })
 
-router.delete('/:catId/delete', async(req,res)=>{
+router.delete('/:catId/delete',isSignedIn, async(req,res)=>{
    await Cat.findByIdAndDelete(req.params.catId)
     res.redirect(`/cat/${req.session.user._id}/my-listings`)
 })
 
-router.get('/:catId/edit', async (req,res)=>{
+router.get('/:catId/edit',isSignedIn, async (req,res)=>{
     const foundCat = await Cat.findById(req.params.catId)
     res.render('cats/edit-cat.ejs',{cat: foundCat})
 })
 
-router.put('/:catId', async (req,res)=>{
+router.put('/:catId',isSignedIn, async (req,res)=>{
 
-    const updatedCat = await Cat.findByIdAndUpdate(req.params.catId, req.body)
+    const updatedCat = await Cat.findByIdAndUpdate(req.params.catId,{
+        name: req.body.name,
+        age:req.body.age,
+        breed:req.body.breed,
+        gender:req.body.gender,
+        description:req.body.description,
+        image:req.body.image,
+        isVaccinated:req.body.isVaccinated,
+        isNeutered:req.body.isNeutered,
+        location:{
+          latitude:req.body.latitude,
+          longitude:req.body.longitude,
+          address:req.body.address
+        },
+    },{new:true})
     
     res.redirect(`/cat/${req.params.catId}`)
 })

@@ -42,6 +42,9 @@ body {
     border-radius: 6px;
     height: 600px;
     width: 450px;
+    object-fit: cover;
+    object-position: center;
+    flex-shrink: 0;
 }
 
 .cat-details {
