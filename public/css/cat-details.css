@@ -40,18 +40,18 @@ body {
 
 #cat-image {
     border-radius: 6px;
-    height: 600px;
     width: 450px;
     object-fit: cover;
     object-position: center;
     flex-shrink: 0;
+    align-self: stretch;
 }
 
 .cat-details {
     border-radius: 6px;
     padding: 18px 30px;
     width: 500px;
-    height: 600px;
+    min-height: 600px;
     background-color: #F3E3D9;
 }
 
@@ -85,11 +85,78 @@ body {
     margin-bottom: 20px;
 
 }
-#location{
+#location {
     margin-top: 25px;
+    margin-bottom: 10px;
     font-weight: 600;
     color: #3A2418;
     font-size: 18px;
+}
+
+#location p {
+    margin: 0;
+}
+
+#see-location {
+    margin-bottom: 10px;
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+#see-location a {
+    color: #806B5B;
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#see-location a:hover {
+    color: #6B4A2E;
+}
+#map-dialog {
+    width: 850px;
+    max-width: 90%;
+    padding: 25px;
+    border: none;
+    border-radius: 10px;
+    background-color: #F3E3D9;
+    margin: auto;
+}
+
+#map-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.map-location label {
+    display: block;
+    color: #3A2418;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#cat-location {
+    display: block;
+    width: 100%;
+    height: 400px;
+}
+
+#close-map {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 30px;
+    background-color: #6B4A2E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#close-map:hover {
+    background-color: #563A25;
 }
 
 #about{
@@ -106,17 +173,51 @@ body {
     justify-content: center;
     align-items: center;
 }
-#Adopt{
-    align-self: center;
-    background-color: #3A2418;
-    border: 0;
-    border-radius: 6px;
-    color: #D5C4AE;
+#Adopt {
+    display: inline-block;
+    background-color: #6B4A2E;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 15px;
-    padding: 9px 18px;
+    width: 350px;
+    text-align: center;
     font-weight: 600;
-    font-size: 20px;
-    width: 500px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+}
+.cat-owner-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.owner-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.username-time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3px;
+}
+
+.username {
+    color: #38261D;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.time {
+    color: #806F62;
+    font-size: 15px;
+    margin: 0;
 }

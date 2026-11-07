@@ -32,14 +32,14 @@ body {
 .h3-button{
     display: flex;
     flex-direction: row;
-    gap: 320px;
+    gap: 25px;
 }
 .cat-card-container {
-    height: 220px;
+    height: 250px;
     width: 650px;
     background-color: #F3E3D9;
     border-radius: 7px;
-    margin: 30px auto 0;
+    margin: 30px 0 0;
     padding: 15px;
     display: flex;
     align-items: center;

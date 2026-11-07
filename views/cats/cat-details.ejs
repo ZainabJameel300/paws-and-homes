@@ -13,13 +13,79 @@
          <div class="top-section">
         <img id="cat-image" src="<%= cats.image%>" alt="<%= cats.name %>">
              <div class="cat-details">
-            <h3 id="name"><%= cats.name%></h3>
+                <div class="cat-owner-info">
+
+    <img class="owner-photo" src="<%= cats.owner.profilePhoto %>" alt="Cat owner profile photo">
+
+    <div class="username-time">
+
+        <p class="username"><%= cats.owner.username %></p>
+
+        <%
+            const createdAt = new Date(cats.createdAt);
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            const yesterday = new Date(today);
+            yesterday.setDate(yesterday.getDate() - 1);
+
+            const listingDate = new Date(createdAt);
+            listingDate.setHours(0, 0, 0, 0);
+
+            let displayDate;
+
+            if (listingDate.getTime() === today.getTime()) {
+                displayDate = "Today";
+            } else if (listingDate.getTime() === yesterday.getTime()) {
+                displayDate = "Yesterday";
+            } else {
+                displayDate = createdAt.toLocaleDateString('en-GB');
+            }
+
+            const displayTime = createdAt.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: '2-digit'
+            });
+        %>
+
+        <p class="time">
+            <%= displayDate %>
+            <% if (displayDate === "Today" || displayDate === "Yesterday") { %>
+                · <%= displayTime %>
+            <% } %>
+        </p>
+
+    </div>
+
+</div>
+
+<h3 id="name"><%= cats.name %></h3>
             <div class="cat-tags">
                 <p id="age"><%= cats.age%> years</p>
                 <p id="gender"><%= cats.gender%></p>
                 <p id="breed"><%= cats.breed%></p>
             </div>
             <div id="location"><p><i class="fa-solid fa-location-dot"></i> <%=cats.location.address%></p></div>
+
+
+            <div id="see-location"><a data-open-modal>See Location on Map</a></div>
+            <dialog id="map-dialog" data-modal>
+                <div class="map-location">
+               <label>Cat's Location:</label>
+                 <location-picker
+                 id="cat-location"
+                 provider="leaflet" 
+                 value="<%= cats.location.latitude %>,<%= cats.location.longitude %>"
+                readonly
+                 style="height: 350px ; width: 800px;">
+                </location-picker>
+                <button data-close-modal id="close-map">Close</button>
+                </div>
+            </dialog>
+
+
+
             <div class="cat-status">
                 <p class="isVaccinated"> <i class="fa-solid fa-syringe"></i> Vaccinated: <%= cats.isVaccinated ? 'Yes' : 'No' %></p>
                 <p class="isNeutered"> <i class="fa-solid fa-circle-check"></i> Neutered: <%= cats.isNeutered ? 'Yes' : 'No' %></p>
@@ -32,12 +98,27 @@
     </div>
 
            
-            <% if(!user||user?._id.toString() !== cats.owner?._id.toString()) { %>
-                <div id="button-id">
-            <button id="Adopt">Apply To Adopt</button>
-            </div>
-            <% } %>
+            <% if (user && user._id.toString() !== cats.owner?._id.toString()) { %>
+    <div id="button-id">
+        <a href="/application/<%= cats._id %>/new" id="Adopt">
+            Apply To Adopt
+        </a>
+    </div>
+<% } %>
 
+<script src="https://cdn.jsdelivr.net/npm/location-picker@3"></script>
+<script>
+    const openLink = document.querySelector('[data-open-modal]')
+    const closeButton = document.querySelector('[data-close-modal]')
+    const modal= document.querySelector('[data-modal]')
+
+    openLink.addEventListener('click', ()=>{
+        modal.showModal()
+    })
+    closeButton.addEventListener('click',()=>{
+        modal.close()
+    })
+</script>
 
 </body>
 </html>

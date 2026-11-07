@@ -29,7 +29,7 @@ router.post('/', isSignedIn, async (req,res)=>{
 })
 
 router.get('/', async (req,res)=>{
-    const allCats = await Cat.find().populate('owner')
+    const allCats = await Cat.find({status:'Available'}).populate('owner')
     res.render('cats/browse-cats.ejs',{cats: allCats})
 })
 
