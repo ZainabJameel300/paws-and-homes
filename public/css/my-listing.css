@@ -34,19 +34,23 @@ body {
     flex-direction: row;
     gap: 25px;
 }
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+}
 .cat-card-container {
     height: 250px;
-    width: 650px;
+    width: 100%;
     background-color: #F3E3D9;
     border-radius: 7px;
-    margin: 30px 0 0;
+    margin: 0;
     padding: 15px;
     display: flex;
     align-items: center;
     gap: 25px;
 }
-
-
 .cat-img {
     border-radius: 5px;
     height: 185px;
@@ -132,6 +136,7 @@ body {
     margin-top: 0;
     padding: 9px 18px;
     font-weight: 600;
+    margin-top: 10px;
 }
 
 #list-cat-button{

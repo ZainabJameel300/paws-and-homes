@@ -1,4 +1,4 @@
-# Project Name
+# Paws & Homes
 
 
 ## Overview
@@ -8,6 +8,12 @@
 
 
 ## Technologies Used
+1. MEN Stack 
+ - MongoDB
+ - Express js
+ - Node js 
+
+ 2. CSS and JavaScript
 
 
 ## Getting Started

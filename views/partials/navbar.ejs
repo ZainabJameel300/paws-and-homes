@@ -23,14 +23,14 @@
                 <label for="profile">My Profile </label>
                 <select name="profile" id="profile" onchange="window.location.href=this.value">
                   <option value="" selected disabled>My Profile</option>
-                  <option value="">Application Requests</option>
+                  <option value="/application/applications-requests">Application Requests</option>
                   <option value="/cat/<%= user._id %>/my-listings">My Listings</option>
                   <option value="/application">My Applications</option>
                   <option value="/appointments">My Appointments</option>
             </select>
             </div>
 
-            <a class="button logout-button" href="/auth/sign-out">Logout</a>
+            <a class="button logout-button" href="/auth/sign-out"><i class="fa fa-sign-out" aria-hidden="true"></i><span>  Logout</span></a>
 
         <% } else { %>
             <a class="button" href="/auth/sign-up">Sign up</a>

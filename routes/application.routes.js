@@ -35,11 +35,26 @@ router.get('/',isSignedIn, async (req,res)=>{
     res.render('applications/my-applications.ejs',{cats: allAppliedCats})
 })
 
+
+router.get('/applications-requests',isSignedIn,async(req,res)=>{
+    //first we need to find the cats that the user has listed for adoption
+    const usersCats = await Cat.find({owner: req.session.user._id})
+    
+    //then we need to save the cats ids in an array using the map method
+    const catIds = usersCats.map((cat)=>{
+        return cat._id
+    })
+    
+    //then we find applications for those cats
+    const foundApplications = await Application.find({cat:{$in:catIds}}).populate('applicant').populate('cat')
+    
+    res.render('applications/application-requests.ejs',{applications: foundApplications})
+})
+
 router.get('/:applicationId',isSignedIn,async(req,res)=>{
     const foundApplication = await Application.findById(req.params.applicationId).populate('cat')
     res.render('applications/view-application.ejs',{application:foundApplication})
 })
-
 
 
 

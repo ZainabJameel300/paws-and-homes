@@ -66,6 +66,7 @@
                 <p id="gender"><%= cats.gender%></p>
                 <p id="breed"><%= cats.breed%></p>
             </div>
+            <div class="location-container">
             <div id="location"><p><i class="fa-solid fa-location-dot"></i> <%=cats.location.address%></p></div>
 
              <!-- This code is inspired from this youtube video https://www.youtube.com/watch?v=ywtkJkxJsdg -->
@@ -83,6 +84,7 @@
                 <button data-close-modal id="close-map">Close</button>
                 </div>
             </dialog>
+            </div>
 
 
 
@@ -92,7 +94,9 @@
             </div>
             <hr>
              <h3 id="about">About <%= cats.name%></h3>
+             <div class="descreption-container">
             <p id="descreption"><%= cats.description%></p>
+            </div>
             </div>
             </div>
     </div>

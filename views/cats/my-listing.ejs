@@ -15,6 +15,8 @@
         <h3>Manage the cats you've listied for adoption.</h3>
         <a href="/cat/new"><button id="list-cat-button"> <i class="fa fa-plus" aria-hidden="true"></i> List a New Cat</button></a>
         </div>
+
+        <div class="cat-grid">
         
             <% for(let oneCat of cats) { %>
 
@@ -59,6 +61,7 @@
         </p>
 
         <p class="time">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
             <%= displayDate %>
             <% if (displayDate === "Today" || displayDate === "Yesterday") { %>
                 · <%= displayTime %>
@@ -90,6 +93,7 @@
     </div>
 
 <% } %>
+</div>
     </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

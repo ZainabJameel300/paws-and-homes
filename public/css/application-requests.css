@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #DED2C2;
+    margin: 0;
+}
+
+.page-container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    left: 20px;
+}
+
+.page-heading {
+    margin: 0 0 60px;
+    color: #38261D;
+}
+
+.page-heading h1 {
+    margin: 0 0 5px;
+    padding-bottom: 15px;
+}
+
+.page-heading h3 {
+    margin: 0;
+}
+
+/* Application Card */
+.request-container {
+    width: 800px;
+    min-height: 190px;
+    background-color: #F3E3D9;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Applicant Photo */
+.applicant-photo {
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+}
+
+.applicant-photo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Right Side Information */
+.applicant-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.applicant-details h3 {
+    color: #3A2418;
+    font-size: 20px;
+    margin: 0 0 4px;
+}
+
+.applicant-details p {
+    color: #806B5B;
+    margin: 0;
+}
+
+
+.application-date {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.application-date p {
+    margin: 0;
+    color: #806B5B;
+    font-size: 15px;
+}
+
+.date-phone-label{
+    color: #3A2418;
+    font-weight: 600;
+}
+
+
+.application-date i {
+    margin-right: 6px;
+    color: #6B4A2E;
+}
+
+.see-application {
+    display: inline-block;
+    background-color: #6B4A2E;
+    color: white;
+    text-decoration: none;
+    padding: 9px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.see-application:hover {
+    background-color: #563A25;
+}
+
+.see-application i {
+    margin-left: 7px;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Requests</title>
+    <link rel="stylesheet" href="/css/application-requests.css">
+</head>
+<body>
+   <%- include('../partials/navbar') %>
+    <div class="page-container">
+        <div class="page-heading">
+            <h1>Application Requests</h1>
+            <h3>Review Adoption Applications for Your Cats</h3>
+        </div>
+        
+<% for(let oneApplication of applications) { %>
+
+    <div class="request-container">
+
+        <!-- Applicant Profile Photo -->
+        <div class="applicant-photo">
+            <img src="<%= oneApplication.applicant.profilePhoto %>" alt="Applicant Profile Photo">
+        </div>
+
+        <!-- Applicant Information -->
+        <div class="applicant-info">
+
+            <div class="applicant-details">
+                <h3><%= oneApplication.applicant.username %>  has applied to adopt
+                <%= oneApplication.cat.name %></h3>
+
+            </div>
+
+            <div class="application-date">
+
+                <%
+                    const createdAt = new Date(oneApplication.createdAt);
+
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+
+                    const yesterday = new Date(today);
+                    yesterday.setDate(yesterday.getDate() - 1);
+
+                    const listingDate = new Date(createdAt);
+                    listingDate.setHours(0, 0, 0, 0);
+
+                    let displayDate;
+
+                    if (listingDate.getTime() === today.getTime()) {
+                        displayDate = "Today";
+                    } else if (listingDate.getTime() === yesterday.getTime()) {
+                        displayDate = "Yesterday";
+                    } else {
+                        displayDate = createdAt.toLocaleDateString('en-GB');
+                    }
+
+                    const displayTime = createdAt.toLocaleTimeString('en-US', {
+                        hour: 'numeric',
+                        minute: '2-digit'
+                    });
+                %>
+
+                <p class="time">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span class="date-phone-label">Appplied on:</span>
+                     
+                    <%= displayDate %>
+                    <% if (displayDate === "Today" || displayDate === "Yesterday") { %>
+                        · <%= displayTime %>
+                    <% } %>
+                </p>
+
+                <p class="phone-number">
+                    <i class="fa-solid fa-phone"></i>
+                    <span class="date-phone-label">Phone Number:</span>
+                    
+                    <%= oneApplication.applicant.phoneNumber %>
+                </p>
+
+            </div>
+
+            <div class="application-actions">
+                <a href="" class="see-application">
+                    See Application
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+<% } %>
+
+
+         
+    </div>
+    
+</body>
+</html>
