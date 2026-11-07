@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const { application } = require("express");
 const Cat = require('../models/Cat');
+const Application = require('../models/Application')
 const isSignedIn = require("../middleware/is-signed-in");
 const passUserToView = require('../middleware/pass-user-to-view')
 
@@ -35,7 +36,22 @@ router.get('/', async (req,res)=>{
 
 router.get('/:catId', async (req,res)=>{
     const foundCat = await Cat.findById(req.params.catId).populate('owner')
-    res.render('cats/cat-details.ejs', {cats: foundCat})
+    let hasApplied = false
+
+    //this checks if the user has applied for that cat or not and send that value to the ejs file
+    
+    if(req.session.user){
+        const exsistingApplication = await Application.findOne({
+            cat:req.params.catId,
+            applicant: req.session.user._id
+        })
+
+        if(exsistingApplication){
+            hasApplied = true
+        }
+    }
+
+    res.render('cats/cat-details.ejs', {cats: foundCat ,hasApplied})
 })
 
 router.get('/:userId/my-listings',isSignedIn,async(req,res)=>{

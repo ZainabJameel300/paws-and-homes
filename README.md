@@ -88,3 +88,5 @@
 - [Sweet Alert Library](https://sweetalert2.github.io/)
 - [location-picker](https://github.com/cyphercodes/location-picker)
 - [Font Awesome Icons](https://fontawesome.com/v4/icons/)
+- [The New dialog HTML Element Changes Modals Forever](https://www.youtube.com/watch?v=ywtkJkxJsdg)
+- [histroy.back() method](https://www.w3schools.com/jsref/met_his_back.asp)

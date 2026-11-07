@@ -30,9 +30,14 @@ router.post('/:catId',isSignedIn,async(req,res)=>{
     res.redirect('/application')
 })
 
-router.get('/', async (req,res)=>{
-    const allAppliedCats = await Application.find().populate('cat')
+router.get('/',isSignedIn, async (req,res)=>{
+    const allAppliedCats = await Application.find({applicant:req.session.user._id}).populate('cat')
     res.render('applications/my-applications.ejs',{cats: allAppliedCats})
+})
+
+router.get('/:applicationId',isSignedIn,async(req,res)=>{
+    const foundApplication = await Application.findById(req.params.applicationId).populate('cat')
+    res.render('applications/view-application.ejs',{application:foundApplication})
 })
 
 

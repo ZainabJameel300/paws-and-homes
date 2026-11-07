@@ -9,7 +9,7 @@
 <body>
     <%- include('../partials/navbar') %>
     <div class="cat-content">
-        <a href="/cat"><button id="go-back"> ← Go Back</button></a>
+    <button id="go-back" onclick="history.back()"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back</button>
          <div class="top-section">
         <img id="cat-image" src="<%= cats.image%>" alt="<%= cats.name %>">
              <div class="cat-details">
@@ -68,7 +68,7 @@
             </div>
             <div id="location"><p><i class="fa-solid fa-location-dot"></i> <%=cats.location.address%></p></div>
 
-
+             <!-- This code is inspired from this youtube video https://www.youtube.com/watch?v=ywtkJkxJsdg -->
             <div id="see-location"><a data-open-modal>See Location on Map</a></div>
             <dialog id="map-dialog" data-modal>
                 <div class="map-location">
@@ -98,7 +98,7 @@
     </div>
 
            
-            <% if (user && user._id.toString() !== cats.owner?._id.toString()) { %>
+            <% if (user && user._id.toString() !== cats.owner?._id.toString() && !hasApplied) { %>
     <div id="button-id">
         <a href="/application/<%= cats._id %>/new" id="Adopt">
             Apply To Adopt

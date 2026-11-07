@@ -8,12 +8,103 @@
 </head>
 <body>
     <%- include('../partials/navbar') %>
-    <div class="page-container">  
-    <div class="page-heading">
-        <h1>My Applications</h1>
-        <h3>Keep Track of Your Adoption Applications</h3>
+
+    <div class="page-container">
+
+        <div class="page-heading">
+            <h1>My Applications</h1>
+            <h3>Keep Track of Your Adoption Applications</h3>
+        </div>
+
+        <% for(let application of cats) { %>
+
+            <% if (application.cat) { %>
+
+            <div class="cat-card-container">
+
+                <img class="cat-img" src="<%= application.cat.image %>" alt="<%= application.cat.name %>">
+
+                <div class="cat-info">
+
+                    <p class="cat-name"><%= application.cat.name %></p>
+
+                    <p class="age-gender">
+                        <%= application.cat.age %> Years · <%= application.cat.gender %>
+                    </p>
+
+                    <p class="time">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <%= application.cat.location ? application.cat.location.address : 'Location not available' %>
+                    </p>
+
+                    <%
+                        const createdAt = new Date(application.cat.createdAt);
+
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+
+                        const yesterday = new Date(today);
+                        yesterday.setDate(yesterday.getDate() - 1);
+
+                        const listingDate = new Date(createdAt);
+                        listingDate.setHours(0, 0, 0, 0);
+
+                        let displayDate;
+
+                        if (listingDate.getTime() === today.getTime()) {
+                            displayDate = "Today";
+                        } else if (listingDate.getTime() === yesterday.getTime()) {
+                            displayDate = "Yesterday";
+                        } else {
+                            displayDate = createdAt.toLocaleDateString('en-GB');
+                        }
+
+                        const displayTime = createdAt.toLocaleTimeString('en-US', {
+                            hour: 'numeric',
+                            minute: '2-digit'
+                        });
+                    %>
+
+                    <p class="time">
+                        <%= displayDate %>
+                        <% if (displayDate === "Today" || displayDate === "Yesterday") { %>
+                            · <%= displayTime %>
+                        <% } %>
+                    </p>
+
+                    <div class="two-buttons">
+
+                    <a href="/cat/<%= application.cat._id %>">
+                        <button type="button">
+                            View Cat Details
+                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </a>
+                    <a href="/application/<%= application._id%>">
+                        <button type="button">
+                            View Application
+                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </a>
+                    </div>
+
+                </div>
+
+                <div class="cat-actions">
+
+                    <div class="status">
+                        <%= application.status %>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <% } %>
+
+        <% } %>
+
     </div>
-    </div>
-    
+
 </body>
 </html>
