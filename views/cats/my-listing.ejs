@@ -22,14 +22,17 @@
 
     <div class="cat-card-container">
 
-        <img class="cat-img" src="<%= oneCat.image %>" alt="<%= oneCat.name %>">
+    <img class="cat-img" src="<%= oneCat.image %>" alt="<%= oneCat.name %>">
 
-        <div class="cat-info">
-            <p class="cat-name"><%= oneCat.name %></p>
-            <p class="age-gender">
-                <%= oneCat.age %> Years · <%= oneCat.gender %>
-            </p>
-            <%
+    <div class="cat-info">
+
+        <p class="cat-name"><%= oneCat.name %></p>
+
+        <p class="age-gender">
+            <%= oneCat.age %> Years · <%= oneCat.gender %>
+        </p>
+
+        <%
             const createdAt = new Date(oneCat.createdAt); //saves the date of the post creation in createdAt using JS Date object
 
             const today = new Date(); //this gets you the current date and time
@@ -56,42 +59,52 @@
                 minute: '2-digit'
             });
         %>
-        <p class="time">
-            <i class="fa-solid fa-location-dot"></i> <%= oneCat.location.address%>
+
+        <p class="time location-text">
+            <i class="fa-solid fa-location-dot"></i>
+            <%= oneCat.location.address %>
         </p>
 
         <p class="time">
-            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <i class="fa-regular fa-calendar"></i>
             <%= displayDate %>
             <% if (displayDate === "Today" || displayDate === "Yesterday") { %>
                 · <%= displayTime %>
             <% } %>
         </p>
 
+        <a href="/cat/<%= oneCat._id %>" class="view-details">
+            View Details
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
 
-            <a href="/cat/<%=oneCat._id%>"><button type="button">View Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button></a>
+    </div>
+
+    <div class="cat-actions">
+
+        <div class="status <%= oneCat.status.toLowerCase() %>">
+            <%= oneCat.status %>
         </div>
 
-        <div class="cat-actions">
+        <div class="card-buttons">
 
-            <div class="status">
-                <%=oneCat.status%>
-            </div>
+            <a href="/cat/<%= oneCat._id %>/edit">
+                <button type="button">
+                    <i class="fa-solid fa-pen"></i> Edit
+                </button>
+            </a>
 
-            <div class="card-buttons">
-                <a href="/cat/<%= oneCat._id %>/edit">
-                    <button type="button"><i class="fa fa-pencil" aria-hidden="true"> </i> <span>  </span>  Edit</button>
-                </a>
-
-                <form class="delete-form" action="/cat/<%= oneCat._id%>/delete?_method=DELETE" method="post">
-                    <button type="submit"><i class="fa fa-trash" aria-hidden="true"></i><span>  </span>Delete</button>
-                </form>
-            </div>
+            <form class="delete-form" action="/cat/<%= oneCat._id %>/delete?_method=DELETE" method="post">
+                <button type="submit">
+                    <i class="fa-solid fa-trash"></i> Delete
+                </button>
+            </form>
 
         </div>
 
     </div>
 
+</div>
 <% } %>
 </div>
     </div>

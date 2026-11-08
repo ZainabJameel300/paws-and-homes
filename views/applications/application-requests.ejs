@@ -13,22 +13,34 @@
             <h1>Application Requests</h1>
             <h3>Review Adoption Applications for Your Cats</h3>
         </div>
-        
+        <div class="request-grid">
+
 <% for(let oneApplication of applications) { %>
 
     <div class="request-container">
 
-        <!-- Applicant Profile Photo -->
         <div class="applicant-photo">
             <img src="<%= oneApplication.applicant.profilePhoto %>" alt="Applicant Profile Photo">
         </div>
 
-        <!-- Applicant Information -->
         <div class="applicant-info">
 
-            <div class="applicant-details">
-                <h3><%= oneApplication.applicant.username %>  has applied to adopt
-                <%= oneApplication.cat.name %></h3>
+            <div class="applicant-top-row">
+
+                <div class="applicant-details">
+                    <h3>
+                        <%= oneApplication.applicant.username %> has applied to adopt
+                        <span class="cat-name"><%= oneApplication.cat.name %></span>
+                    </h3>
+                </div>
+
+                <% if (oneApplication.status === "Pending") { %>
+                    <span class="status-pill pending">Pending</span>
+                <% } else if (oneApplication.status === "Accepted") { %>
+                    <span class="status-pill accepted">Accepted</span>
+                <% } else if (oneApplication.status === "Rejected") { %>
+                    <span class="status-pill rejected">Rejected</span>
+                <% } %>
 
             </div>
 
@@ -64,8 +76,7 @@
 
                 <p class="time">
                     <i class="fa-regular fa-calendar"></i>
-                    <span class="date-phone-label">Appplied on:</span>
-                     
+                    <span class="date-phone-label">Applied on:</span>
                     <%= displayDate %>
                     <% if (displayDate === "Today" || displayDate === "Yesterday") { %>
                         · <%= displayTime %>
@@ -75,14 +86,13 @@
                 <p class="phone-number">
                     <i class="fa-solid fa-phone"></i>
                     <span class="date-phone-label">Phone Number:</span>
-                    
                     <%= oneApplication.applicant.phoneNumber %>
                 </p>
 
             </div>
 
             <div class="application-actions">
-                <a href="" class="see-application">
+                <a href="/application/<%= oneApplication._id %>/view-application-request" class="see-application">
                     See Application
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
@@ -94,6 +104,7 @@
 
 <% } %>
 
+</div>
 
          
     </div>

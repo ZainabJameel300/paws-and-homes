@@ -5,30 +5,35 @@
 body {
     background-color: #DED2C2;
     margin: 0;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 .page-container {
     width: 95%;
     max-width: 1100px;
-    margin: 0 auto;
-    position: relative;
-    left: 20px;
+    margin: 45px auto;
 }
 
 .page-heading {
-    margin: 0 0 10px;
     color: #38261D;
-    margin-bottom: 60px;
+    margin-bottom: 35px;
 }
 
 .page-heading h1 {
-    margin: 0 0 5px;
-    padding-bottom: 15px;
+    margin: 0 0 8px;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 32px;
 }
 
 .page-heading h3 {
     margin: 0;
+    color: #806B5B;
+    font-size: 16px;
+    font-weight: 500;
 }
+
+/* Two Cards Per Row */
 .cat-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -36,101 +41,140 @@ body {
     margin-top: 30px;
     margin-bottom: 50px;
 }
+
+/* Application Card */
 .cat-card-container {
-    height: 250px;
+    height: 260px;
     width: 100%;
+    min-width: 0;
     background-color: #F3E3D9;
-    border-radius: 7px;
-    margin: 0;
-    padding: 15px;
+    border: 1px solid #E5D2C3;
+    border-radius: 14px;
+    padding: 18px;
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 18px;
+    box-shadow: 0 4px 12px rgba(58, 36, 24, 0.08);
 }
 
-
+/* Cat Image */
 .cat-img {
-    border-radius: 5px;
-    height: 185px;
-    width: 130px;
+    border-radius: 9px;
+    height: 190px;
+    width: 135px;
     object-fit: cover;
     flex-shrink: 0;
 }
 
-
+/* Cat Information */
 .cat-info {
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
-    padding-top: 15px;
-    gap: 10px;
+    align-items: flex-start;
+    height: 100%;
+    padding: 12px 0;
+    gap: 9px;
     flex: 1;
     min-width: 0;
 }
 
 .cat-info p {
     margin: 0;
-    line-height: 1.3;
+    line-height: 1.4;
 }
 
 .cat-name {
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 21px;
+    font-weight: 800;
     color: #3A2418;
 }
 
 .age-gender {
-     margin: 0;
     color: #806B5B;
-    font-size: 15px;
+    font-size: 14px;
 }
-.time{
+
+.time {
     color: #806B5B;
-    font-size: 15px;
+    font-size: 13px;
 }
+
+.time i {
+    color: #8B6345;
+    margin-right: 5px;
+}
+
+/* Keep long addresses on one line */
+.location-text {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Status Pill */
 .cat-actions {
-    margin-left: auto;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    flex-shrink: 0;
 }
 
 .status {
-    background-color: #DCCDB9;
-    color: #3A2418;
-    padding: 7px 18px;
+    padding: 7px 14px;
     border-radius: 20px;
-    font-size: 13px;
-}
-
-.two-buttons {
-    margin-top: 25px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-
-}
-
-.two-buttons a {
-    text-decoration: none;
-}
-
-.cat-info button {
-    margin-top: 5px;
-    width: 125px;
-    background-color: #3A2418;
-    border: 0;
-    border-radius: 6px;
-    color: #D5C4AE;
-    cursor: pointer;
-    padding: 9px 5px;
-    font-weight: 600;
-    font-family: "Nunito Sans", sans-serif;
     font-size: 12px;
+    font-weight: 700;
     white-space: nowrap;
 }
 
-.cat-info button:hover {
+/* Status Colors */
+.status.pending {
+    background-color: #FFF2D6;
+    color: #94651B;
+    border: 1px solid #EBD49C;
+}
+
+.status.accepted {
+    background-color: #E6F4EA;
+    color: #1E4620;
+    border: 1px solid #A8DFB5;
+}
+
+.status.rejected {
+    background-color: #FCE8E6;
+    color: #601E18;
+    border: 1px solid #F5C2C1;
+}
+
+/* Two Buttons */
+.two-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+    width: 100%;
+}
+
+.two-buttons a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    background-color: #6B4A2E;
+    color: white;
+    border-radius: 7px;
+    padding: 9px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.two-buttons a:hover {
     background-color: #563A25;
 }
+
+.two-buttons i {
+    margin-left: 4px;
+}
+

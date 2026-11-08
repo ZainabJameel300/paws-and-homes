@@ -56,7 +56,29 @@ router.get('/:applicationId',isSignedIn,async(req,res)=>{
     res.render('applications/view-application.ejs',{application:foundApplication})
 })
 
+router.get('/:applicationId/view-application-request',isSignedIn,async (req,res)=>{
+    const foundApplication = await Application.findById(req.params.applicationId).populate('applicant').populate('cat')
+    res.render('applications/view-application-requests.ejs',{application:foundApplication})
+})
 
+//this is a route to change the status of the Application to Accepted
+router.post('/:applicationId/accept', isSignedIn, async (req, res) => {
 
+    await Application.findByIdAndUpdate(req.params.applicationId, {
+        status: 'Accepted'
+    });
+
+    res.redirect(`/application/${req.params.applicationId}/view-application-request`);
+});
+
+//This route is to change the status to Rejected
+router.post('/:applicationId/reject', isSignedIn, async (req, res) => {
+
+    await Application.findByIdAndUpdate(req.params.applicationId, {
+        status: 'Rejected'
+    });
+
+    res.redirect(`/application/${req.params.applicationId}/view-application-request`);
+});
 
 module.exports = router;

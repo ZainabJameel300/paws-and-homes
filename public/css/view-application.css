@@ -88,7 +88,8 @@ body {
     font-weight: 600;
 }
 
-.form-group textarea {
+
+.text-area-container {
     width: 100%;
     padding: 11px;
     background-color: #F3EEE7;

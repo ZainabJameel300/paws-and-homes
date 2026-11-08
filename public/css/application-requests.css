@@ -5,47 +5,59 @@
 body {
     background-color: #DED2C2;
     margin: 0;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 .page-container {
     width: 95%;
     max-width: 1100px;
-    margin: 0 auto;
-    position: relative;
-    left: 20px;
+    margin: 45px auto;
 }
 
 .page-heading {
-    margin: 0 0 60px;
+    margin-bottom: 40px;
     color: #38261D;
 }
 
 .page-heading h1 {
-    margin: 0 0 5px;
-    padding-bottom: 15px;
+    margin: 0 0 8px;
+    padding-bottom: 5px;
+    font-family: "Poppins", sans-serif;
+    font-size: 32px;
 }
 
 .page-heading h3 {
     margin: 0;
+    color: #806B5B;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Two cards per row */
+.request-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
 }
 
 /* Application Card */
 .request-container {
-    width: 800px;
-    min-height: 190px;
+    width: 100%;
+    min-height: 210px;
     background-color: #F3E3D9;
-    border-radius: 10px;
-    margin-bottom: 25px;
-    padding: 20px;
+    border: 1px solid #E5D2C3;
+    border-radius: 14px;
+    padding: 22px;
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 18px;
+    box-shadow: 0 4px 12px rgba(58, 36, 24, 0.08);
 }
 
 /* Applicant Photo */
 .applicant-photo {
-    width: 140px;
-    height: 140px;
+    width: 105px;
+    height: 105px;
     flex-shrink: 0;
 }
 
@@ -54,61 +66,104 @@ body {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
+    border: 4px solid #E5D2C3;
 }
 
-/* Right Side Information */
+/* Applicant Information */
 .applicant-info {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.applicant-details h3 {
-    color: #3A2418;
-    font-size: 20px;
-    margin: 0 0 4px;
-}
-
-.applicant-details p {
-    color: #806B5B;
-    margin: 0;
-}
-
-
-.application-date {
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
+.applicant-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.applicant-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.applicant-details h3 {
+    color: #3A2418;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.cat-name {
+    color: #8B6345;
+    font-weight: 800;
+}
+
+/* Status Pills */
+.status-pill {
+    padding: 6px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.pending {
+    background-color: #FFF2D6;
+    color: #94651B;
+    border: 1px solid #EBD49C;
+}
+
+.accepted {
+    background-color: #E6F4EA;
+    color: #1E4620;
+    border: 1px solid #A8DFB5;
+}
+
+.rejected {
+    background-color: #FCE8E6;
+    color: #601E18;
+    border: 1px solid #F5C2C1;
+}
+
+/* Date and Phone Number */
+.application-date {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .application-date p {
     margin: 0;
     color: #806B5B;
-    font-size: 15px;
+    font-size: 13px;
 }
 
-.date-phone-label{
+.date-phone-label {
     color: #3A2418;
-    font-weight: 600;
+    font-weight: 700;
 }
-
 
 .application-date i {
     margin-right: 6px;
-    color: #6B4A2E;
+    color: #8B6345;
 }
 
+/* See Application Button */
 .see-application {
     display: inline-block;
     background-color: #6B4A2E;
-    color: white;
+    color: #FFFFFF;
     text-decoration: none;
     padding: 9px 16px;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: 600;
-    margin-top: 15px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background-color 0.2s;
 }
 
 .see-application:hover {

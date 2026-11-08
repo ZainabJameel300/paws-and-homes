@@ -1,0 +1,251 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #DED2C2;
+    margin: 0;
+    padding: 0;
+}
+
+.page-container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    left: 20px;
+}
+
+.page-heading {
+    color: #38261D;
+    margin-bottom: 35px;
+}
+
+.page-heading h1 {
+    margin: 0 0 5px;
+    padding-bottom: 10px;
+}
+
+.page-heading h3 {
+    margin: 0;
+}
+
+#go-back {
+    margin: 0 0 20px;
+    border-radius: 6px;
+    border: none;
+    height: 30px;
+    width: 150px;
+    background-color:#D5C4AE ;
+    font-weight: 600;
+    font-size: 20px;
+    color: #4A4A46;
+    cursor: pointer;
+}
+
+
+.application-content {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 25px;
+}
+
+.form-container {
+    background-color: #EAE1D5;
+    width: 60%;
+    padding: 25px 35px 35px;
+    border-radius: 10px;
+}
+
+.cat-image-container {
+    width: 40%;
+}
+
+.cat-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.application-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #3A2418;
+    font-weight: 600;
+}
+
+
+.text-area-container {
+    width: 100%;
+    padding: 11px;
+    background-color: #F3EEE7;
+    border: 1px solid #C6B29C;
+    border-radius: 5px;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    outline: none;
+    resize: vertical;
+}
+
+.form-group textarea:focus {
+    border-color: #6B4A2E;
+}
+
+.radio-options {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background-color: #F3EEE7;
+    border: 1px solid #C6B29C;
+    border-radius: 5px;
+    padding: 10px;
+    min-height: 42px;
+}
+
+.radio-options label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.radio-options input {
+    accent-color: #6B4A2E;
+    cursor: pointer;
+}
+
+.acceptance-buttons {
+    padding: 12px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+#accept-button{
+    background-color: #e6f4ea;
+     color: #1e4620; 
+     border: 2px solid #a8dfb5; 
+}
+#reject-button{
+    background-color: #fce8e6; 
+    color: #601e18; 
+    border: 2px solid #f5c2c1; 
+}
+
+
+.cat-owner-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 35px;
+}
+
+.owner-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.username-time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3px;
+}
+
+.username {
+    color: #38261D;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.time {
+    color: #806F62;
+    font-size: 15px;
+    margin: 0;
+}
+.username-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 250px;
+}
+
+.status-pill {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.accepted {
+    background-color: #e6f4ea;
+    color: #1e4620;
+    border: 1px solid #a8dfb5;
+}
+
+.rejected {
+    background-color: #fce8e6;
+    color: #601e18;
+    border: 1px solid #f5c2c1;
+}
+.schedule-button {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    margin-top: 5px;
+    background-color: #6B4A2E;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.schedule-button:hover {
+    background-color: #523720;
+}
+.acceptance-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.acceptance-actions form {
+    margin: 0;
+    flex: 1;
+}
+
+.acceptance-buttons {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
