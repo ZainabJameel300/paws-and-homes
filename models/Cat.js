@@ -5,7 +5,6 @@ const catSchema = new mongoose.Schema({
     type:String,
     required:true,
     maxlength:20,
-    minlength:5,
     trim:true
   },
   age:{

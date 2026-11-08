@@ -25,8 +25,75 @@
         </a>
     </div>
 
-    <img src="/assets/sign-up-image.png" alt="Home page cat image">
+    <img src="/assets/brown.png" alt="Home page cat image">
 </div>
-<hr id="middle-line">
+<div id="middle-line">
+    </div>
+
+    <div class="featured-section">
+
+    <div class="featured-heading">
+        <h2>
+            <i class="fa-solid fa-paw"></i>
+            Featured Cats
+            <i class="fa-solid fa-paw"></i>
+        </h2>
+
+        <p>Meet some of our lovely cats looking for a home</p>
+    </div>
+
+    <div class="cat-cards-container">
+
+        <% for (let oneCat of cats) { %>
+
+            <div class="card">
+
+                <div class="cat-owner-info">
+
+                    <img class="owner-photo"
+                         src="<%= oneCat.owner.profilePhoto %>"
+                         alt="Cat owner profile photo">
+
+                    <div class="username-time">
+                        <p class="username"><%= oneCat.owner.username %></p>
+
+                        <p class="time">
+                            <%= new Date(oneCat.createdAt).toLocaleDateString('en-GB') %>
+                        </p>
+                    </div>
+
+                </div>
+
+                <img class="img"
+                     src="<%= oneCat.image %>"
+                     alt="<%= oneCat.name %>">
+
+                <div class="cat-details">
+
+                    <p class="cat-name"><%= oneCat.name %></p>
+
+                    <p><%= oneCat.age %> years · <%= oneCat.gender %></p>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <%= oneCat.location.address %>
+                    </p>
+
+                    <a href="/cat/<%= oneCat._id %>">
+                        <button type="button">
+                            View Details
+                            <i class="fa fa-long-arrow-right"></i>
+                        </button>
+                    </a>
+
+                </div>
+
+            </div>
+
+        <% } %>
+
+    </div>
+
+</div>
 </body>
 </html>
