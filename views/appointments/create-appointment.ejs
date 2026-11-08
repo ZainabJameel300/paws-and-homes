@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Appointment</title>
+    <link rel="stylesheet" href="/css/book-appointment.css">
+</head>
+<body>
+
+    <%- include('../partials/navbar') %>
+
+    <div class="page-container">
+
+        <div class="page-heading">
+            <h1>Book an Appointment</h1>
+            <h3>Book an appointment for cat collection</h3>
+        </div>
+
+        <div class="form-container">
+
+            <form class="list-form"
+                  action="/appointment/<%= application %>"
+                  method="POST">
+
+                <div class="form-group full-width">
+                    <label for="message">Message:</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="4"
+                        placeholder="Leave a message for the cat applicant..."
+                        required></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="dateOfPickup">Date of Pickup:</label>
+                    <input
+                        name="dateOfPickup"
+                        id="dateOfPickup"
+                        type="date"
+                        required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Pickup Location:</label>
+
+                    <location-picker
+                        id="pickUpLocation"
+                        provider="leaflet"
+                        center="26.2235,50.5876"
+                        lat-name="latitude"
+                        lng-name="longitude"
+                        address-name="address"
+                        search
+                        reverse-geocode
+                        locate="button"
+                        required
+                        style="height: 350px">
+                    </location-picker>
+                </div>
+
+                <button type="submit">Book Appointment</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        const createForms = document.querySelectorAll(".list-form");
+
+        createForms.forEach(function(form) {
+
+            form.addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                Swal.fire({
+                    title: "Ready to Book Your Appointment?",
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: "#6B4A2E",
+                    cancelButtonColor: "#A99A8A",
+                    confirmButtonText: "Yes, Continue",
+                    cancelButtonText: "Cancel"
+                }).then(function(result) {
+
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+
+                });
+
+            });
+
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/location-picker@3"></script>
+
+</body>
+</html>

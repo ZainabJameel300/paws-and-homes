@@ -25,7 +25,7 @@ const appointmentSchema = new mongoose.Schema({
        type:Number,
        required:true 
     },
-    adress:{
+    address:{
         type:String,
         required:true
     }

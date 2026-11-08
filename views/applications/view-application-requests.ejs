@@ -137,7 +137,7 @@
 
 <% } else if (application.status === "Accepted") { %>
 
-    <a href="/appointment/new?application=<%= application._id %>" class="schedule-button">
+    <a href="/appointment/new/<%= application._id %>" class="schedule-button">
         <i class="fa fa-calendar" aria-hidden="true"></i>
         Schedule Appointment
     </a>
