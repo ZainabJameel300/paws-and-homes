@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="/css/nav-bar.css">
 <link rel="stylesheet" href="/css/font.css">
 <link
@@ -9,32 +10,88 @@
     <a href="/">
         <img id="logo" src="/assets/logo-nav-bar.png" alt="Paws & Homes">
     </a>
-    
 
     <div class="nav-links <%= user ? 'logged-in' : 'logged-out' %>">
-        <a href="/">Home</a>
-        <a href="/cat">Browse Cats</a>
-        <% if (user){ %>
+
+        <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">
+            Home
+        </a>
+
+        <a href="/cat" class="<%= currentPath === '/cat' || (currentPath.startsWith('/cat/') && currentPath !== '/cat/new' && !currentPath.includes('/my-listings')) ? 'active' : '' %>">
+            Browse Cats
+        </a>
+
+        <% if (user) { %>
+
+            <a href="/cat/new" class="<%= currentPath === '/cat/new' ? 'active' : '' %>">
+                List a Cat
+            </a>
+
             
-            <a href="/cat/new">List a Cat</a>
+<div class="profile">
+    <img
+        id="profile-photo"
+        src="<%= user.profilePhoto %>"
+        alt="User profile photo"
+    >
 
-            <div class="profile">
-                <img id="profile-photo" src="<%=user.profilePhoto%>" alt="User profile photo">
-                <label for="profile">My Profile </label>
-                <select name="profile" id="profile" onchange="window.location.href=this.value">
-                  <option value="" selected disabled>My Profile</option>
-                  <option value="/application/applications-requests">Application Requests</option>
-                  <option value="/cat/<%= user._id %>/my-listings">My Listings</option>
-                  <option value="/application">My Applications</option>
-                  <option value="/appointment">My Appointments</option>
-            </select>
-            </div>
+    
+<select
+    name="profile"
+    id="profile"
+    aria-label="Profile navigation"
+    onchange="if (this.value) window.location.href = this.value"
+>
+    <option value="" disabled
+        <%= !currentPath.startsWith('/application/applications-requests') &&
+            !currentPath.includes('/my-listings') &&
+            currentPath !== '/application' &&
+            currentPath !== '/appointment'
+            ? 'selected' : '' %>>
+        My Profile
+    </option>
 
-            <a class="button logout-button" href="/auth/sign-out"><i class="fa fa-sign-out" aria-hidden="true"></i><span>  Logout</span></a>
+    <option
+        value="/application/applications-requests"
+        <%= currentPath === '/application/applications-requests' ? 'selected' : '' %>>
+        Application Requests
+    </option>
+
+    <option
+        value="/cat/<%= user._id %>/my-listings"
+        <%= currentPath.includes('/my-listings') ? 'selected' : '' %>>
+        My Listings
+    </option>
+
+    <option
+        value="/application"
+        <%= currentPath === '/application' ? 'selected' : '' %>>
+        My Applications
+    </option>
+
+    <option
+        value="/appointment"
+        <%= currentPath === '/appointment' ? 'selected' : '' %>>
+        My Appointments
+    </option>
+</select>
+
+
+    <i class="fa-solid fa-chevron-down profile-arrow"></i>
+</div>
+
+
+            <a class="button logout-button" href="/">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                <span> Logout</span>
+            </a>
 
         <% } else { %>
+
             <a class="button" href="/auth/sign-up">Sign up</a>
             <a class="button" href="/auth/sign-in">Login</a>
+
         <% } %>
+
     </div>
 </nav>
