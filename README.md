@@ -96,3 +96,4 @@
 - [Font Awesome Icons](https://fontawesome.com/v4/icons/)
 - [The New dialog HTML Element Changes Modals Forever](https://www.youtube.com/watch?v=ywtkJkxJsdg)
 - [histroy.back() method](https://www.w3schools.com/jsref/met_his_back.asp)
+- [Master API Pagination: Implementing skip() and limit() in Express](https://www.youtube.com/watch?v=bZ_-v0MDMaY)

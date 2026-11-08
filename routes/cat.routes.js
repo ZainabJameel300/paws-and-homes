@@ -29,10 +29,59 @@ router.post('/', isSignedIn, async (req,res)=>{
     res.redirect(`/cat/${req.session.user._id}/my-listings`)
 })
 
-router.get('/', async (req,res)=>{
-    const allCats = await Cat.find({status:'Available'}).populate('owner')
-    res.render('cats/browse-cats.ejs',{cats: allCats})
-})
+
+// some of this code is inspired by this youtube video as well as omar explnantion (https://www.youtube.com/watch?v=bZ_-v0MDMaY)
+router.get('/', async (req, res) => {
+
+    const gender = req.query.gender;
+    const breed = req.query.breed;
+    const age = req.query.age;
+
+    //pagination
+    const page = Number(req.query.page) || 1 // this reads the page number from the url if there's no page number then start with 1
+    const limit = 8 //this is how many limit will the page have (how many cards per page)
+    const skip = (page-1)*limit  // this tells us how many do we skip in the next pagination
+    // this will be our query object (so like whenever the user selects a filter we add it in this object and then Moongoose excute all of these togather)
+    let filter = {
+        status: 'Available'
+    };
+
+    //  gender filter
+    if (gender) {
+        filter.gender = gender;
+    }
+
+    //  breed filter
+    if (breed) {
+        filter.breed = breed;
+    }
+
+    // age filter
+    if (age === '1-5') {
+        filter.age = { $gte: 1, $lte: 5 };
+    }
+    else if (age === '6-10') {
+        filter.age = { $gte: 6, $lte: 10 };
+    }
+    else if (age === '11+') {
+        filter.age = { $gte: 11 };
+    }
+    const allcats = await Cat.find(filter).populate('owner').skip(skip).limit(limit);
+
+    const totalCats = await Cat.countDocuments(filter);
+
+    const totalPages = Math.ceil(totalCats / limit);
+
+    res.render('cats/browse-cats.ejs', {
+        cats: allcats,
+        gender: gender,
+        breed: breed,
+        age: age,
+        currentPage: page,
+        totalPages: totalPages
+    });
+});
+
 
 router.get('/:catId', async (req,res)=>{
     const foundCat = await Cat.findById(req.params.catId).populate('owner')
