@@ -138,6 +138,22 @@ router.put('/:catId',isSignedIn, async (req,res)=>{
     
     res.redirect(`/cat/${req.params.catId}`)
 })
+router.post('/:catId/adopt', isSignedIn, async (req, res) => {
+
+    await Cat.findOneAndUpdate(
+        {
+            _id: req.params.catId,
+            owner: req.session.user._id,
+            status: 'Available'
+        },
+        {
+            status: 'Adopted'
+        }
+    );
+
+    res.redirect(`/cat/${req.session.user._id}/my-listings`);
+
+});
 
 
 

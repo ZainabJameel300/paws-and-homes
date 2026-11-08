@@ -235,3 +235,21 @@ body {
     padding-left: 10px;
     border-radius: 7px;
 }
+#mark-adopted {
+    display: inline-block;
+    background-color: #6B4A2E;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 350px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+#mark-adopted:hover {
+    background-color: #563A25;
+}

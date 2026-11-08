@@ -102,12 +102,32 @@
     </div>
 
            
-            <% if (user && user._id.toString() !== cats.owner?._id.toString() && !hasApplied) { %>
+           <!-- Apply To Adopt button -->
+<% if (user && user._id.toString() !== cats.owner._id.toString() && !hasApplied && cats.status === 'Available') { %>
+
     <div id="button-id">
         <a href="/application/<%= cats._id %>/new" id="Adopt">
             Apply To Adopt
         </a>
     </div>
+
+<% } %>
+
+
+<!-- Mark as Adopted button -->
+<% if (user && user._id.toString() === cats.owner._id.toString() && cats.status === 'Available') { %>
+
+    <div id="button-id">
+        <form action="/cat/<%= cats._id %>/adopt" method="POST">
+
+            <button type="submit" id="mark-adopted">
+                <i class="fa-solid fa-check"></i>
+                Mark as Adopted
+            </button>
+
+        </form>
+    </div>
+
 <% } %>
 
 <script src="https://cdn.jsdelivr.net/npm/location-picker@3"></script>
