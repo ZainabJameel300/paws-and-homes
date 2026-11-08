@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Appointments</title>
+    <link rel="stylesheet" href="/css/my-appointments.css">
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Appointments</title>
+    <link rel="stylesheet" href="/css/my-appointments.css">
+</head>
+<body>
+
+    <%- include('../partials/navbar') %>
+
+    <div class="page-container">
+
+        <div class="page-heading">
+            <h1>My Appointments</h1>
+            <h3>View appointments scheduled by cat owners</h3>
+        </div>
+
+        <% if (appointments.length === 0) { %>
+
+            <div class="empty-message">
+                <h2>No appointments yet!</h2>
+                <p>When a cat owner schedules an appointment for your application, it will appear here.</p>
+            </div>
+
+        <% } else { %>
+
+            <div class="appointments-container">
+
+                <% for (let appointment of appointments) { %>
+
+                    <div class="appointment-card">
+
+                        <img class="cat-image"
+                             src="<%= appointment.application.cat.image %>"
+                             alt="Cat image">
+
+                        <div class="appointment-info">
+
+                            <h2><%= appointment.application.cat.name %></h2>
+
+                            <div class="owner-info">
+                                <img src="<%= appointment.application.cat.owner.profilePhoto %>"
+                                     alt="Owner profile photo">
+
+                                <span><%= appointment.application.cat.owner.username %></span>
+                            </div>
+
+                            <p>
+                                The owner of <strong><%= appointment.application.cat.name %></strong>
+                                has scheduled an appointment with you.
+                            </p>
+
+                            <p class="appointment-date">
+                                <i class="fa-solid fa-calendar"></i>
+                                <%= new Date(appointment.dateOfPickup).toLocaleDateString('en-GB') %>
+                            </p>
+
+                        </div>
+
+                        <div class="appointment-actions">
+
+                            <% if (appointment.status === null) { %>
+                                <span class="status-pill scheduled">Scheduled</span>
+                            <% } else if (appointment.status === 'Completed') { %>
+                                <span class="status-pill completed">Completed</span>
+                            <% } else if (appointment.status === 'Cancelled') { %>
+                                <span class="status-pill cancelled">Cancelled</span>
+                            <% } %>
+
+                            <a href="/appointment/<%= appointment._id %>" class="details-button">
+                                See Appointment Details
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                <% } %>
+
+            </div>
+
+        <% } %>
+
+    </div>
+
+</body>
+</html>
+    
+</body>
+</html>

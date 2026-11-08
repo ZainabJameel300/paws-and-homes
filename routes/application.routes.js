@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const Application = require('../models/Application')
 const Cat = require('../models/Cat');
+const Appointment = require('../models/Appointment')
 const isSignedIn = require("../middleware/is-signed-in");
 const passUserToView = require('../middleware/pass-user-to-view')
 
@@ -56,10 +57,22 @@ router.get('/:applicationId',isSignedIn,async(req,res)=>{
     res.render('applications/view-application.ejs',{application:foundApplication})
 })
 
-router.get('/:applicationId/view-application-request',isSignedIn,async (req,res)=>{
-    const foundApplication = await Application.findById(req.params.applicationId).populate('applicant').populate('cat')
-    res.render('applications/view-application-requests.ejs',{application:foundApplication})
-})
+router.get('/:applicationId/view-application-request', isSignedIn, async (req, res) => {
+    const foundApplication = await Application.findById(req.params.applicationId)
+        .populate('applicant')
+        .populate('cat');
+
+    const existingAppointment = await Appointment.findOne({
+        application: req.params.applicationId
+    });
+
+    const hasAppointment = existingAppointment ? true : false;
+
+    res.render('applications/view-application-requests.ejs', {
+        application: foundApplication,
+        hasAppointment: hasAppointment
+    });
+});
 
 //this is a route to change the status of the Application to Accepted
 router.post('/:applicationId/accept', isSignedIn, async (req, res) => {

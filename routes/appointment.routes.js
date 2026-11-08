@@ -27,4 +27,102 @@ router.post('/:applicationId', isSignedIn, async (req, res) => {
 
 });
 
+// My Appointments
+router.get('/', isSignedIn, async (req, res) => {
+
+    const userApplications = await Application.find({
+        applicant: req.session.user._id
+    });
+
+    const applicationIds = userApplications.map((application) => {
+        return application._id;
+    });
+
+    const appointments = await Appointment.find({
+        application: { $in: applicationIds }
+    })
+        .populate({
+            path: 'application',
+            populate: {
+                path: 'cat',
+                populate: {
+                    path: 'owner'
+                }
+            }
+        })
+        .sort({ dateOfPickup: 1 });
+
+    res.render('appointments/my-appointments.ejs', {
+        appointments: appointments
+    });
+});
+
+
+// View Appointment Details
+router.get('/:appointmentId', isSignedIn, async (req, res) => {
+
+    const foundAppointment = await Appointment.findById(req.params.appointmentId)
+        .populate({
+            path: 'application',
+            populate: {
+                path: 'cat',
+                populate: {
+                    path: 'owner'
+                }
+            }
+        });
+
+    if (!foundAppointment) {
+        return res.send('Appointment not found');
+    }
+
+
+    res.render('appointments/view-appointment.ejs', {
+        appointment: foundAppointment
+    });
+});
+
+
+// Mark Appointment as Completed
+router.post('/:appointmentId/complete', isSignedIn, async (req, res) => {
+
+    const foundAppointment = await Appointment.findById(req.params.appointmentId)
+        .populate('application');
+
+    if (!foundAppointment) {
+        return res.send('Appointment not found');
+    }
+
+    if (foundAppointment.application.applicant.toString() !== req.session.user._id.toString()) {
+        return res.send('You are not allowed to update this appointment');
+    }
+
+    foundAppointment.status = 'Completed';
+    await foundAppointment.save();
+
+    res.redirect(`/appointment/${foundAppointment._id}`);
+});
+
+
+// Mark Appointment as Cancelled
+router.post('/:appointmentId/cancel', isSignedIn, async (req, res) => {
+
+    const foundAppointment = await Appointment.findById(req.params.appointmentId)
+        .populate('application');
+
+    if (!foundAppointment) {
+        return res.send('Appointment not found');
+    }
+
+    if (foundAppointment.application.applicant.toString() !== req.session.user._id.toString()) {
+        return res.send('You are not allowed to update this appointment');
+    }
+
+    foundAppointment.status = 'Cancelled';
+    await foundAppointment.save();
+
+    res.redirect(`/appointment/${foundAppointment._id}`);
+});
+
+
 module.exports = router;

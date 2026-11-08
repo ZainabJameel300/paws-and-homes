@@ -15,7 +15,7 @@
         <div class="page-heading">
             <h1>View <%=application.applicant.username %>'s Application</h1>
         </div>
-          <a href="/application/applications-requests"">
+          <a href="/application/applications-requests">
           <button id="go-back"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back</button>
           </a>
         
@@ -135,7 +135,7 @@
 
     </div>
 
-<% } else if (application.status === "Accepted") { %>
+<% } else if (application.status === "Accepted" && !hasAppointment) { %>
 
     <a href="/appointment/new/<%= application._id %>" class="schedule-button">
         <i class="fa fa-calendar" aria-hidden="true"></i>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Details</title>
+    <link rel="stylesheet" href="/css/view-appointment.css">
+</head>
+<body>
+
+    <%- include('../partials/navbar') %>
+
+    <div class="page-container">
+
+        <div class="page-heading">
+            <h1>Appointment Details</h1>
+            <h3>Here are the details of your scheduled appointment</h3>
+        </div>
+
+        <a href="/application/applications-requests">
+          <button id="go-back"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back</button>
+          </a> 
+
+        <div class="appointment-container">
+
+                
+     
+            <div class="cat-section">
+                <img src="<%= appointment.application.cat.image %>" alt="Cat image">
+                <h2><%= appointment.application.cat.name %></h2>
+            </div>
+
+            <div class="appointment-details">
+
+                <div class="owner-section">
+                    <img src="<%= appointment.application.cat.owner.profilePhoto %>"
+                         alt="Owner profile photo">
+
+                    <div>
+                        <h3><%= appointment.application.cat.owner.username %></h3>
+                        <p>Cat Owner</p>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <strong>Appointment Date:</strong>
+                    <p><%= new Date(appointment.dateOfPickup).toLocaleString('en-GB') %></p>
+                </div>
+
+                <div class="detail-item">
+                    <strong>Pickup Location:</strong>
+                    <p><%= appointment.pickUpLocation.address %></p>
+                </div>
+
+                <div class="detail-item">
+                    <strong>Message from Owner:</strong>
+                    <p><%= appointment.message %></p>
+                </div>
+
+                <div class="detail-item">
+                    <strong>Appointment Status:</strong>
+
+                    <% if (appointment.status === null) { %>
+                        <span class="status-pill scheduled">Scheduled</span>
+                    <% } else if (appointment.status === 'Completed') { %>
+                        <span class="status-pill completed">Completed</span>
+                    <% } else { %>
+                        <span class="status-pill cancelled">Cancelled</span>
+                    <% } %>
+                </div>
+
+                <% if (appointment.status === null) { %>
+
+                    <div class="acceptance-actions">
+
+    <form action="/appointment/<%= appointment._id %>/complete" method="POST">
+        <button class="acceptance-buttons" id="accept-button" type="submit">
+            <i class="fa fa-check" aria-hidden="true"></i>
+            Completed
+        </button>
+    </form>
+
+    <form action="/appointment/<%= appointment._id %>/cancel" method="POST">
+        <button class="acceptance-buttons" id="reject-button" type="submit">
+            <i class="fa fa-times" aria-hidden="true"></i>
+            Cancelled
+        </button>
+    </form>
+
+</div>
+
+                <% } %>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

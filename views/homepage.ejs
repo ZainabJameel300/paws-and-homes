@@ -4,11 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="/css/homepage.css">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=LINE+Seed+JP&family=Lily+Script+One&family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+</style>
 </head>
 <body>
     <%- include('./partials/navbar') %>
+   <div class="top-section">
+    <div class="left-section">
+        <div class="title">
+            <h1>Every Cat</h1>
+            <h1>Deserves a</h1>
+            <h1 id="cursive-word">Loving</h1>
+            <h1>Home</h1>
+        </div>
 
-    <h1>Welcome to my Website</h1>
-    
+        <a href="/cat" class="browse-button">
+            Browse Our Cats <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <img src="/assets/sign-up-image.png" alt="Home page cat image">
+</div>
+<hr id="middle-line">
 </body>
 </html>
