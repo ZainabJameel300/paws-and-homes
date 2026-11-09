@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "cloudinary": "^2.11.0",
     "connect-mongo": "^6.0.0",
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
@@ -22,6 +23,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^9.1.2",
     "morgan": "^1.10.1",
+    "multer": "^2.5.0",
     "sweetalert2": "^11.26.25"
   }
 }

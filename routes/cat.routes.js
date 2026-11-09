@@ -4,19 +4,35 @@ const Cat = require('../models/Cat');
 const Application = require('../models/Application')
 const isSignedIn = require("../middleware/is-signed-in");
 const passUserToView = require('../middleware/pass-user-to-view')
+const upload = require("../middleware/upload");
+const cloudinary = require("../config/cloudinary");
 
 router.get('/new',isSignedIn,(req,res)=>{
     res.render('cats/list-cat.ejs')
 })
 
-router.post('/', isSignedIn, async (req,res)=>{
+router.post('/', isSignedIn,upload.single("image"), async (req,res)=>{
+     // Upload image to Cloudinary
+        let image = "";
+    
+        if (req.file) {
+            const result = await cloudinary.uploader.upload(
+                `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`,
+                {
+                    folder: "paws-and-homes/cat-image"
+                }
+            );
+    
+            image = result.secure_url;
+        }
+    
     const createdCatListing = await Cat.create({
         name: req.body.name,
         age:req.body.age,
         breed:req.body.breed,
         gender:req.body.gender,
         description:req.body.description,
-        image:req.body.image,
+        image:image,
         isVaccinated:req.body.isVaccinated,
         isNeutered:req.body.isNeutered,
         location:{

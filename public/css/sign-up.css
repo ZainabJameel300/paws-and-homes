@@ -72,3 +72,10 @@ body {
     color: #6B4A2E;
     font-family: "Nunito Sans", sans-serif;
 }
+.error-message {
+    color: #B51F35;
+    font-size: 13px;
+    font-family: "Nunito Sans", sans-serif;
+    margin-top: -5px;
+    margin-bottom: 5px;
+}

@@ -19,25 +19,48 @@
 
         <div class="form-container">
 
-            <form action="/auth/sign-up" method="post">
+            <form action="/auth/sign-up" method="post" enctype="multipart/form-data">
 
                 <label for="email">Email:</label>
-                <input type="email" name="email" id="email">
 
+        <input type="email" name="email" id="email"
+          value="<%= values?.email || '' %>">
+         <% if (errors.email) { %>
+           <span class="error-message"><%= errors.email.msg %></span>
+           <% } %>
                 <label for="username">Username:</label>
-                <input type="text" name="username" id="username">
-
+           <input type="text" name="username" id="username"
+          value="<%= values?.username || '' %>">
+         <% if (errors.username) { %>
+           <span class="error-message"><%= errors.username.msg %></span>
+           <% } %>
+            
                 <label for="password">Password:</label>
-                <input type="password" name="password" id="password">
 
+<input type="password" name="password" id="password">
+
+<% if (errors.password) { %>
+    <span class="error-message"><%= errors.password.msg %></span>
+<% } %>
+                
                 <label for="confirmPassword">Confirm Password:</label>
-                <input type="password" name="confirmPassword" id="confirmPassword">
 
-                <label for="phoneNumber">Phone Number:</label>
-                <input type="text" name="phoneNumber" id="phoneNumber">
+<input type="password" name="confirmPassword" id="confirmPassword">
 
+<% if (errors.confirmPassword) { %>
+    <span class="error-message"><%= errors.confirmPassword.msg %></span>
+<% } %>
+
+               <label for="phoneNumber">Phone Number:</label>
+
+<input type="text" name="phoneNumber" id="phoneNumber"
+    value="<%= values?.phoneNumber || '' %>">
+
+<% if (errors.phoneNumber) { %>
+    <span class="error-message"><%= errors.phoneNumber.msg %></span>
+<% } %>
                 <label for="profilePhoto">Profile Photo:</label>
-                <input type="text" name="profilePhoto" id="profilePhoto">
+                <input type="file" name="profilePhoto" id="profilePhoto" accept="image/*">
 
                 <button type="submit">Sign Up</button>
 

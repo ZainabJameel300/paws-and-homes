@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-container">
-        <form class="list-form" action="/cat" method="post">
+        <form class="list-form" action="/cat" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="name">Cat's Name:</label>
@@ -65,7 +65,7 @@
 
             <div class="form-group full-width">
                 <label for="image">Cat Photo:</label>
-                <input name="image" id="image" type="text" placeholder="Paste an image URL for now">
+                <input name="image" id="image" type="file" placeholder="Paste an image URL for now" accept="image/*">
             </div>
 
 <div class="form-group full-width">
