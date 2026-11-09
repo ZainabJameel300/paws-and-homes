@@ -91,7 +91,7 @@ router.get('/', async (req, res) => {
     else if (age === '11+') {
         filter.age = { $gte: 11 };
     }
-    const allcats = await Cat.find(filter).populate('owner').skip(skip).limit(limit);
+    const allcats = await Cat.find(filter).populate('owner').sort({ createdAt: -1 }).skip(skip).limit(limit);
 
     const totalCats = await Cat.countDocuments(filter);
 
@@ -130,8 +130,8 @@ router.get('/:catId', async (req,res)=>{
 
 router.get('/:userId/my-listings',isSignedIn,async(req,res)=>{
     const myListings = await Cat.find({owner:req.params.userId})
-    const successMessage = req.session.successMessage
-    req.session.sucessMessage = null
+    const successMessage = req.session.successMessage;
+    delete req.session.successMessage;
     res.render('cats/my-listing.ejs',{
         cats: myListings,
         listingCreated: req.query.listed === 'success',

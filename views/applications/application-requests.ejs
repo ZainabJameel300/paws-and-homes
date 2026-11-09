@@ -13,6 +13,14 @@
             <h1>Application Requests</h1>
             <h3>Review Adoption Applications for Your Cats</h3>
         </div>
+        
+       <% if(applications.length === 0) { %> 
+            <div class="empty-message">
+                <h2>No Applications Request yet!</h2>
+                <p>When other users apply to Adopt your cat, their requests will appear here!</p>
+            </div>
+       <% } else{%>
+
         <div class="request-grid">
 
 <% for(let oneApplication of applications) { %>
@@ -105,6 +113,7 @@
 <% } %>
 
 </div>
+<% }%>
 
          
     </div>

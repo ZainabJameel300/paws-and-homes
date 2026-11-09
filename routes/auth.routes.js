@@ -130,10 +130,7 @@ if (emailInDatabase) {
         profilePhoto: profilePhoto
     });
 
-    res.redirect("/auth/sign-in",{
-        values:{},
-        errors:{}
-    });
+    res.redirect("/auth/sign-in");
 });
 
 // Sign in routes

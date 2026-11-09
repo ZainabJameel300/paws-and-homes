@@ -3,18 +3,39 @@
 
 ## Overview
 
+Paws & Homes is a cat adoption website that connects cat owners with potential adopters. Users can list cats for adoption, browse available cats, submit adoption applications, manage requests, and schedule pickup appointments. The platform aims to make finding loving homes for cats simple and convenient.
+
 
 ## Screenshots
+![Home Page](public/assets/Home-page.png)
 
+![Browse Cats Page](public/assets/Browse-cats-page.png)
+
+![List Cats Page](public/assets/list-cat-page.png)
 
 ## Technologies Used
-1. MEN Stack 
- - MongoDB
- - Express js
- - Node js 
 
- 2. CSS and JavaScript
+### Frontend
+- EJS
+- CSS3
+- JavaScript
 
+### Backend
+- Node.js
+- Express.js
+
+### Database
+- MongoDB
+- Mongoose
+
+### Tools & Libraries
+- Cloudinary
+- Location picker on Github
+- Express Validator
+- Express Session
+- Bcrypt
+- SweetAlert2
+- Git & GitHub
 
 ## Getting Started
 
@@ -55,29 +76,63 @@
 
 ## Routes
 
+ ### Cat Routes 
 
-| Method | Route | Description |
-|---------|-------|-------------|
-| GET | / | Home page |
-| GET | /listings | List all listings |
-| GET | /listings/new | New listing form |
-| POST | /listings | Create listing |
-| GET | /listings/:id | View listing |
-| GET | /listings/:id/edit | Edit listing form |
-| PUT | /listings/:id | Update listing |
-| DELETE | /listings/:id | Delete listing |
+| Method 	| Route                    	| Descreption                                                                    	|
+|--------	|--------------------------	|--------------------------------------------------------------------------------	|
+| GET    	| /cat/new                 	| Displays the form to list a new cat.                                           	|
+| POST   	| /cat                     	| Creates a new cat listing and save it in the database                          	|
+| GET    	| /cat                     	| Displays available cats in the browse cats page with filtering and pagination. 	|
+| GET    	| /cat/:catId              	| Displays the details of a specific cat.                                        	|
+| GET    	| /cat/:userId/my-listings 	| Displays all cat listings created by the logged-in user.                       	|
+| DELETE 	| /cat/:catId/delete       	| Deletes a specific cat listing.                                                	|
+| GET    	| /cat/:catId/edit         	| Displays the form to edit a cat listing.                                       	|
+| PUT    	| /cat/:catId              	| Updates an existing cat listing.                                               	|
+| POST   	| /cat/:catId/adopt        	| Change the cat status to Adopted                                               	|
 
+### Application Routes
 
+| Method 	| Route                                               	| Descreption                                                                  	|
+|--------	|-----------------------------------------------------	|------------------------------------------------------------------------------	|
+| GET    	| application/cat/:catId/new                          	| Displays the adoption application form for a specific cat.                   	|
+| POST   	| application/cat/:catId                              	| Checks for existing applications and submits a new adoption application.     	|
+| GET    	| application                                         	| Displays all adoption applications submitted by the logged-in user.          	|
+| GET    	| application/application-requests                    	| Displays all adoption requests received for the user's listed cats.          	|
+| GET    	| application/:applicationId                          	| Displays the details of an application that the logged-in user has submitted 	|
+| GET    	| application/:applicationId/view-application-request 	| Displays the details of a specific adoption request.                         	|
+| POST   	| application/:applicationId/accept                   	| Updates the application status to Accepted.                                  	|
+| POST   	| application/:application/reject                     	| Updates the application status to Rejected.                                  	|
+
+### Appointment Routes
+
+| Method 	| Route                                 	| Descreption                                                                                             	|
+|--------	|---------------------------------------	|---------------------------------------------------------------------------------------------------------	|
+| GET    	| /appointment/new/:applicationId       	| Displays the form to schedule an adoption appointment for a specific application.                       	|
+| POST   	| /appointment/:applicationId           	| Creates a new appointment with the pickup date, location, and message.                                  	|
+| GET    	| /appointment                          	| Displays all appointments related to the logged-in user's adoption applications, sorted by pickup date. 	|
+| GET    	| /appointment/:appointmentId           	| Displays the details of a specific appointment.                                                         	|
+| POST   	| /appointment/:appointmentId/complete  	| Marks an appointment as completed after verifying that the logged-in user is the applicant.             	|
+| POST   	| /appointment/:appointmentId/cancelled 	| Cancels an appointment after verifying that the logged-in user is the applicant.                        	|
 
 
 ## Features
-
-
+- User authentication
+- Create, edit, and delete cat listings
+- Browse available cats
+- Filter cats by gender, breed, and age
+- View detailed cat profiles and photos
+- Submit and manage adoption applications
+- Accept or reject adoption requests
+- Schedule adoption pickup appointments
+- Track application and appointment statuses
 
 
 ## Future Enhancements
-
-
+- Add keyword-based search functionality
+- Add user roles of admin and normal user
+- Introduce an in-app messaging system between adopters and cat owners
+- Add email notifications for application and appointment updates
+- Expand user profile management features
 
 
 ## Credits and Refrences

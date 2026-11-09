@@ -220,3 +220,10 @@ body {
 .card-buttons form {
     margin: 0;
 }
+.empty-message {
+    background-color: #F3E3D9;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    color: #3A2418;
+}

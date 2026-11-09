@@ -16,6 +16,13 @@
             <h3>Keep Track of Your Adoption Applications</h3>
         </div>
 
+        <% if(cats.length === 0) {%>
+            <div class="empty-message">
+                <h2>No Applications yet!</h2>
+                <p>When a you apply for cats, they will apear here!</p>
+            </div>
+        <% } else{%>
+
         <div class="cat-grid">
 
         <% for(let application of cats) { %>
@@ -106,6 +113,8 @@
 
         <% } %>
         </div>
+
+        <% }%>
 
     </div>
 

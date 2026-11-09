@@ -16,6 +16,15 @@
         <a href="/cat/new"><button id="list-cat-button"> <i class="fa fa-plus" aria-hidden="true"></i> List a New Cat</button></a>
         </div>
 
+        <% if(cats.length === 0) { %> 
+         
+            <div class="empty-message">
+                <h2>You did not List any cats yet!</h2>
+                <p>When you list a cat , they will appear here!</p>
+            </div>
+
+        <% } else {%>
+
         <div class="cat-grid">
         
             <% for(let oneCat of cats) { %>
@@ -107,6 +116,7 @@
 </div>
 <% } %>
 </div>
+<% }%>
     </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

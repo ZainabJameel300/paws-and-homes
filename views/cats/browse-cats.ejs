@@ -19,53 +19,59 @@
     </div>
 
     
-    <form  action="/cat" method="GET" class="filters-container">
-       <div class="filters-container">
+    
+<form action="/cat" method="GET" class="filters-container">
 
-    <div class="filter">
-        <label for="gender">Gender</label>
-        <select name="gender" id="gender" onchange="window.location.href=this.value">
-            <option value="/cat" <%= !gender ? 'selected' : '' %>>All Genders</option>
-            <option value="/cat?gender=Male" <%= gender === 'Male' ? 'selected' : '' %>>Male</option>
-        <option value="/cat?gender=Female" <%= gender === 'Female' ? 'selected' : '' %>>Female</option>
-        </select>
+    <div class="filters-container">
+
+
+        <div class="filter">
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender" onchange="this.form.submit()">
+                <option value="">All Genders</option>
+                <option value="Male" <%= gender === 'Male' ? 'selected' : '' %>>Male</option>
+                <option value="Female" <%= gender === 'Female' ? 'selected' : '' %>>Female</option>
+            </select>
+        </div>
+
+
+        <div class="filter">
+            <label for="breed">Breed</label>
+            <select name="breed" id="breed" onchange="this.form.submit()">
+
+                <option value="">All Breeds</option>
+                <option value="domestic-shorthair" <%= breed === 'domestic-shorthair' ? 'selected' : '' %>>Domestic Shorthair</option>
+                <option value="domestic-mediumhair" <%= breed === 'domestic-mediumhair' ? 'selected' : '' %>>Domestic Mediumhair</option>
+                <option value="domestic-longhair" <%= breed === 'domestic-longhair' ? 'selected' : '' %>>Domestic Longhair</option>
+                <option value="mixed-breed" <%= breed === 'mixed-breed' ? 'selected' : '' %>>Mixed Breed / Unknown</option>
+                <option value="bengal" <%= breed === 'bengal' ? 'selected' : '' %>>Bengal</option>
+                <option value="british-shorthair" <%= breed === 'british-shorthair' ? 'selected' : '' %>>British Shorthair</option>
+                <option value="maine-coon" <%= breed === 'maine-coon' ? 'selected' : '' %>>Maine Coon</option>
+                <option value="persian" <%= breed === 'persian' ? 'selected' : '' %>>Persian</option>
+                <option value="ragdoll" <%= breed === 'ragdoll' ? 'selected' : '' %>>Ragdoll</option>
+                <option value="russian-blue" <%= breed === 'russian-blue' ? 'selected' : '' %>>Russian Blue</option>
+                <option value="siamese" <%= breed === 'siamese' ? 'selected' : '' %>>Siamese</option>
+                <option value="sphynx" <%= breed === 'sphynx' ? 'selected' : '' %>>Sphynx</option>
+                <option value="other" <%= breed === 'other' ? 'selected' : '' %>>Other</option>
+
+            </select>
+        </div>
+
+        <div class="filter">
+            <label for="age">Age</label>
+            <select name="age" id="age" onchange="this.form.submit()">
+
+                <option value="">All Ages</option>
+                <option value="1-5" <%= age === '1-5' ? 'selected' : '' %>>1–5 Years</option>
+                <option value="6-10" <%= age === '6-10' ? 'selected' : '' %>>6–10 Years</option>
+                <option value="11+" <%= age === '11+' ? 'selected' : '' %>>11+ Years</option>
+
+            </select>
+        </div>
+
     </div>
+</form>
 
-    <div class="filter">
-    <label for="breed">Breed</label>
-    <select name="breed" id="breed" onchange="window.location.href=this.value">
-
-        <option value="/cat" <%= !breed ? 'selected' : '' %>>All Breeds</option>
-        <option value="/cat?breed=domestic-shorthair" <%= breed === 'domestic-shorthair' ? 'selected' : '' %>>Domestic Shorthair</option>
-        <option value="/cat?breed=domestic-mediumhair" <%= breed === 'domestic-mediumhair' ? 'selected' : '' %>>Domestic Mediumhair</option>
-        <option value="/cat?breed=domestic-longhair" <%= breed === 'domestic-longhair' ? 'selected' : '' %>>Domestic Longhair</option>
-        <option value="/cat?breed=mixed-breed" <%= breed === 'mixed-breed' ? 'selected' : '' %>>Mixed Breed / Unknown</option>
-        <option value="/cat?breed=bengal" <%= breed === 'bengal' ? 'selected' : '' %>>Bengal</option>
-        <option value="/cat?breed=british-shorthair" <%= breed === 'british-shorthair' ? 'selected' : '' %>>British Shorthair</option>
-        <option value="/cat?breed=maine-coon" <%= breed === 'maine-coon' ? 'selected' : '' %>>Maine Coon</option>
-        <option value="/cat?breed=persian" <%= breed === 'persian' ? 'selected' : '' %>>Persian</option>
-        <option value="/cat?breed=ragdoll" <%= breed === 'ragdoll' ? 'selected' : '' %>>Ragdoll</option>
-        <option value="/cat?breed=russian-blue" <%= breed === 'russian-blue' ? 'selected' : '' %>>Russian Blue</option>
-        <option value="/cat?breed=siamese" <%= breed === 'siamese' ? 'selected' : '' %>>Siamese</option>
-        <option value="/cat?breed=sphynx" <%= breed === 'sphynx' ? 'selected' : '' %>>Sphynx</option>
-        <option value="/cat?breed=other" <%= breed === 'other' ? 'selected' : '' %>>Other</option>
-
-    </select>
-</div>
-
-    <div class="filter">
-    <label for="age">Age</label>
-    <select name="age" id="age" onchange="window.location.href=this.value">
-        <option value="/cat" <%= !age ? 'selected' : '' %>>All Ages</option>
-        <option value="/cat?age=1-5" <%= age === '1-5' ? 'selected' : '' %>>1–5 Years</option>
-        <option value="/cat?age=6-10" <%= age === '6-10' ? 'selected' : '' %>>6–10 Years</option>
-        <option value="/cat?age=11%2B" <%= age === '11+' ? 'selected' : '' %>>11+ Years</option>
-
-    </select>
-</div>
-
-</div>
-   </form>
 
 
     <div class="cat-cards-container" >
