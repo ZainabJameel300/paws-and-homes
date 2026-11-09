@@ -149,26 +149,44 @@ router.get('/:catId/edit',isSignedIn, async (req,res)=>{
     res.render('cats/edit-cat.ejs',{cat: foundCat})
 })
 
-router.put('/:catId',isSignedIn, async (req,res)=>{
 
-    const updatedCat = await Cat.findByIdAndUpdate(req.params.catId,{
+router.put('/:catId', isSignedIn, upload.single("image"), async (req, res) => {
+
+    const cat = await Cat.findById(req.params.catId);
+
+    let image = cat.image;
+
+
+    if (req.file) {
+
+        const result = await cloudinary.uploader.upload(
+            `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`,
+            {
+                folder: "paws-and-homes/cat-image"
+            }
+        );
+        image = result.secure_url;
+    }
+
+    const updatedCat = await Cat.findByIdAndUpdate(req.params.catId, {
         name: req.body.name,
-        age:req.body.age,
-        breed:req.body.breed,
-        gender:req.body.gender,
-        description:req.body.description,
-        image:req.body.image,
-        isVaccinated:req.body.isVaccinated,
-        isNeutered:req.body.isNeutered,
-        location:{
-          latitude:req.body.latitude,
-          longitude:req.body.longitude,
-          address:req.body.address
-        },
-    },{new:true})
-    
-    res.redirect(`/cat/${req.params.catId}`)
-})
+        age: req.body.age,
+        breed: req.body.breed,
+        gender: req.body.gender,
+        description: req.body.description,
+        image: image,
+        isVaccinated: req.body.isVaccinated,
+        isNeutered: req.body.isNeutered,
+        location: {
+            latitude: req.body.latitude,
+            longitude: req.body.longitude,
+            address: req.body.address
+        }
+    }, { new: true });
+
+    res.redirect(`/cat/${req.params.catId}`);
+});
+
 router.post('/:catId/adopt', isSignedIn, async (req, res) => {
 
     await Cat.findOneAndUpdate(

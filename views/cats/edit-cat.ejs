@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-container">
-        <form class="update-form" action="/cat/<%= cat._id%>?_method=PUT" method="post">
+        <form class="update-form" action="/cat/<%= cat._id%>?_method=PUT" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="name">Cat's Name:</label>
@@ -119,7 +119,7 @@
 
             <div class="form-group full-width">
                 <label for="image">Cat Photo:</label>
-                <input value="<%=cat.image%>" name="image" id="image" type="text" placeholder="Paste an image URL for now">
+                <input name="image" id="image" type="file" accept="image/*">
             </div>
 
             <div class="form-group full-width">
