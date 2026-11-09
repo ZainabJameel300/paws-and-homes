@@ -174,7 +174,7 @@ res.redirect("/");
 
 router.get("/sign-out", (req, res) => {
 req.session.destroy();
-res.redirect("/auth/sign-in");
+res.redirect("/");
 });
 
 module.exports = router;

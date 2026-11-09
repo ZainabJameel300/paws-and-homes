@@ -202,3 +202,13 @@ body {
     font-size: 13px;
     margin: 0;
 }
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* the transform first have the card move -8px on the y axsis and then scale it 1.02 bigger */
+/* Add a box shadow when hover as well */
+.card:hover {
+    transform: translateY(-8px) scale(1.02); 
+    box-shadow: 0 10px 25px rgba(58, 36, 24, 0.2);
+}

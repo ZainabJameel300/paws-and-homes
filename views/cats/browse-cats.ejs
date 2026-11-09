@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browse Cats</title>
     <link rel="stylesheet" href="/css/browse-cats.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 <body>
     <%- include('../partials/navbar') %>
@@ -64,7 +68,7 @@
    </form>
 
 
-    <div class="cat-cards-container">
+    <div class="cat-cards-container" >
     <% for(let oneCat of cats){ %>
         <div class="card">
          <div class="cat-owner-info">

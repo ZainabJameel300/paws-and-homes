@@ -12,6 +12,8 @@ router.get('/new',isSignedIn,(req,res)=>{
 })
 
 router.post('/', isSignedIn,upload.single("image"), async (req,res)=>{
+
+    try{
      // Upload image to Cloudinary
         let image = "";
     
@@ -42,7 +44,14 @@ router.post('/', isSignedIn,upload.single("image"), async (req,res)=>{
         },
         owner:req.session.user._id
     })
+    req.session.successMessage = 'You Listed Your Cat Sucessfully'
     res.redirect(`/cat/${req.session.user._id}/my-listings`)
+    }
+    catch(error){
+    console.log('Error'+error)
+     res.redirect(`/cat`)
+    }
+     
 })
 
 
@@ -121,7 +130,13 @@ router.get('/:catId', async (req,res)=>{
 
 router.get('/:userId/my-listings',isSignedIn,async(req,res)=>{
     const myListings = await Cat.find({owner:req.params.userId})
-    res.render('cats/my-listing.ejs',{cats:myListings})
+    const successMessage = req.session.successMessage
+    req.session.sucessMessage = null
+    res.render('cats/my-listing.ejs',{
+        cats: myListings,
+        listingCreated: req.query.listed === 'success',
+        successMessage
+    })
 })
 
 router.delete('/:catId/delete',isSignedIn, async(req,res)=>{
