@@ -42,6 +42,7 @@ Paws & Homes is a cat adoption website that connects cat owners with potential a
 
 
 
+
 ## User Stories
 
 1. As a user, I want to be able to create an account, login and logout of the website.
